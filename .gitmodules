@@ -7,3 +7,6 @@
 [submodule "site-lisp/emacs-winum"]
 	path = site-lisp/emacs-winum
 	url = https://github.com/deb0ch/emacs-winum.git
+[submodule "site-lisp/dash.el"]
+	path = site-lisp/dash.el
+	url = https://github.com/magnars/dash.el.git
