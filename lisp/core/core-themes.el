@@ -25,5 +25,30 @@
 
 (add-hook 'after-init-hook 'reapply-themes)
 
+;; =============================================================================
+;; init modeline
+;; =============================================================================
+
+(use-package winnum :config (winum-mode))
+
+(use-package telephone-line
+  :config
+  (progn
+    (telephone-line-defsegment* telephone-line-datetime-segment ()
+                                (format-time-string "%m-%d %k:%M"))
+
+    (setq telephone-line-lhs
+          '((winum  . (telephone-line-window-number-segment))
+            (buffer . (telephone-line-buffer-segment))
+            (mode   . (telephone-line-major-mode-segment))))
+
+    (setq telephone-line-rhs
+          '((info     . (telephone-line-atom-encoding-segment
+                         telephone-line-atom-eol-segment))
+            (time     . (telephone-line-datetime-segment))
+            (position . (telephone-line-airline-position-segment))))
+
+    (telephone-line-mode)))
+
 (provide 'core-themes)
 ;;; core-themes.el ends here
