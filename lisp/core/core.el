@@ -14,6 +14,7 @@
 ;; =============================================================================
 
 (require 'core-packages)
+(require 'core-themes)
 (require 'core-environ)
 
 (provide 'core)
