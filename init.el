@@ -33,6 +33,8 @@
 
 (require 'core)
 
+(require 'init-utils)
+
 (emacsc/load-environ-config)
 
 (when (file-exists-p custom-file)
