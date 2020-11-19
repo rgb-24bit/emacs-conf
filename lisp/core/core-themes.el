@@ -29,7 +29,7 @@
 ;; init modeline
 ;; =============================================================================
 
-(use-package winnum :config (winum-mode))
+(use-package winum :config (winum-mode))
 
 (use-package telephone-line
   :config
