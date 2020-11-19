@@ -50,5 +50,20 @@
 
     (telephone-line-mode)))
 
+;; =============================================================================
+;; init dashboard
+;; =============================================================================
+
+(use-package dashboard
+  :config
+  (progn
+    (dashboard-setup-startup-hook)
+    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard"
+          dashboard-startup-banner 'logo
+          dashboard-center-content t
+          dashboard-show-shortcuts nil
+          dashboard-items '((recents  . 5)
+                            (projects . 5)))))
+
 (provide 'core-themes)
 ;;; core-themes.el ends here
