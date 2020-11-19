@@ -25,4 +25,17 @@
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
+;; =============================================================================
+;; Bootstrap config
+;; =============================================================================
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+(require 'core)
+
+(emacsc/load-environ-config)
+
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 ;;; init.el ends here

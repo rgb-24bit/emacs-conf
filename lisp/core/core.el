@@ -14,6 +14,7 @@
 ;; =============================================================================
 
 (require 'core-packages)
+(require 'core-environ)
 
 (provide 'core)
 ;;; core.el ends here

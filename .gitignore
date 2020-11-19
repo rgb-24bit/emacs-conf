@@ -9,3 +9,10 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# elpa
+elpa
+elpa-*
+
+# emacs
+custom.el
