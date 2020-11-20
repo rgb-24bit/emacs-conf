@@ -39,7 +39,9 @@
 
     (setq telephone-line-lhs
           '((winum  . (telephone-line-window-number-segment))
-            (buffer . (telephone-line-buffer-segment))
+            (buffer . (telephone-line-buffer-modified-segment
+                       telephone-line-filesize-segment
+                       telephone-line-buffer-name-segment))
             (mode   . (telephone-line-major-mode-segment))))
 
     (setq telephone-line-rhs
@@ -64,6 +66,23 @@
           dashboard-show-shortcuts nil
           dashboard-items '((recents  . 5)
                             (projects . 5)))))
+
+;; =============================================================================
+;; display line number
+;; =============================================================================
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(setq display-line-numbers-width-start t)
+
+;; =============================================================================
+;; remove gui elements
+;; =============================================================================
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(tooltip-mode -1)
 
 (provide 'core-themes)
 ;;; core-themes.el ends here
