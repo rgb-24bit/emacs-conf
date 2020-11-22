@@ -35,6 +35,8 @@
 
 (require 'init-utils)
 (require 'init-org)
+(require 'init-yasnippet)
+(require 'init-projectile)
 
 (emacsc/load-environ-config)
 
