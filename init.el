@@ -37,6 +37,7 @@
 (require 'init-org)
 (require 'init-yasnippet)
 (require 'init-projectile)
+(require 'init-ivy)
 
 (emacsc/load-environ-config)
 
