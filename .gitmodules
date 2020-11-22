@@ -22,3 +22,6 @@
 [submodule "site-lisp/emacs-htmlize"]
 	path = site-lisp/emacs-htmlize
 	url = https://github.com/hniksic/emacs-htmlize.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
