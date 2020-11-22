@@ -13,6 +13,7 @@
 ;; load core code
 ;; =============================================================================
 
+(require 'core-paths)
 (require 'core-packages)
 (require 'core-themes)
 (require 'core-environ)
