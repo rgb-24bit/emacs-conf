@@ -42,5 +42,26 @@
 (use-package move-text
   :config (move-text-default-bindings))
 
+;; =============================================================================
+;; recentf
+;; =============================================================================
+
+(use-package recentf
+  :commands (recentf-save-list)
+  :bind ("C-x C-r" . recentf-open-files)
+  :init
+  (progn
+    (setq recentf-save-file (expand-file-name "recentf" emacsc-cacahe-directory)
+          recentf-max-saved-items 1000
+          recentf-auto-cleanup 'never
+          recentf-auto-save-timer (run-with-idle-timer 600 t
+                                                       'recentf-save-list)))
+  :config
+  (progn
+    (add-to-list 'recentf-exclude
+                 (recentf-expand-file-name emacsc-cache-directory))
+    (add-to-list 'recentf-exclude (recentf-expand-file-name package-user-dir))
+    (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
