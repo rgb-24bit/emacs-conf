@@ -51,7 +51,7 @@
   :bind ("C-x C-r" . recentf-open-files)
   :init
   (progn
-    (setq recentf-save-file (expand-file-name "recentf" emacsc-cacahe-directory)
+    (setq recentf-save-file (expand-file-name "recentf" emacsc-cache-directory)
           recentf-max-saved-items 1000
           recentf-auto-cleanup 'never
           recentf-auto-save-timer (run-with-idle-timer 600 t
