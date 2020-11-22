@@ -32,7 +32,7 @@
     ;; fast indexing. Also, because windows ships with a program called
     ;; c:\windows\system32\find.exe that is very much not findutils find
     ;; we ignore that specific executable
-    (when (and (emacsc/system-is-windows) (executable-find "find")
+    (when (and emacsc/system-is-windows (executable-find "find")
                (not (file-in-directory-p
                      (executable-find "find") "C:\\Windows")))
       (setq  projectile-indexing-method 'alien
