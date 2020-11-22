@@ -7,6 +7,7 @@
     :init
     (progn
       (setq yas-snippet-dirs
-            '((expand-file-name "snippets" user-emacs-directory)))
+            '((expand-file-name "snippets" user-emacs-directory)))))
 
+(provide 'init-yasnippet)
 ;;; init-yasnippet.el ends here
