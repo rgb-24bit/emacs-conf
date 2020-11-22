@@ -64,4 +64,5 @@
 (use-package htmlize
   :defer t)
 
+(provide 'init-org)
 ;;; init-org.el ends here

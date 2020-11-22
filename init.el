@@ -34,6 +34,7 @@
 (require 'core)
 
 (require 'init-utils)
+(require 'init-org)
 
 (emacsc/load-environ-config)
 
