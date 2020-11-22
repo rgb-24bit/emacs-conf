@@ -35,7 +35,8 @@
         (orig-load-path load-path))
     (setq load-path (cons dir nil))
     (normal-top-level-add-subdirs-to-load-path)
-    (nconc load-path orig-load-path)))
+    (nconc load-path orig-load-path)
+    (delete-dups load-path)))
 
 (defun emacsc/add-site-lisp-to-load-path ()
   "Add both site-lisp and its immediate subdirs to `load-path'."
