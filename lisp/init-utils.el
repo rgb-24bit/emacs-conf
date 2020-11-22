@@ -63,5 +63,11 @@
     (add-to-list 'recentf-exclude (recentf-expand-file-name package-user-dir))
     (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")))
 
+;; =============================================================================
+;; y-or-n
+;; =============================================================================
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

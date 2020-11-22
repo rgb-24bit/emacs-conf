@@ -43,4 +43,14 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; =============================================================================
+;; start server
+;; =============================================================================
+
+(require 'server)
+
+(unless (server-running-p)
+  (message "Starting a server...")
+  (server-start))
+
 ;;; init.el ends here
