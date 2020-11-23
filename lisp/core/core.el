@@ -14,6 +14,7 @@
 ;; =============================================================================
 
 (require 'core-paths)
+(require 'core-funcs)
 (require 'core-packages)
 (require 'core-themes)
 (require 'core-environ)
