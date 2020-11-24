@@ -4,6 +4,9 @@
 
 (require 'general)
 
+;; To automatically prevent Key sequence starts with a non-prefix key errors
+(general-auto-unbind-keys)
+
 ;; =============================================================================
 ;; leader key
 ;; =============================================================================

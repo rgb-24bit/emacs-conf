@@ -15,7 +15,7 @@
   (interactive)
   (find-file-existing emacsc-environ-file))
 
-(defun emacsc/load-environ-config ()
+(defun emacsc/load-init-config ()
   "Load user init file."
   (interactive)
   (when (file-exists-p user-init-file)
