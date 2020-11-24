@@ -13,5 +13,16 @@ are issues with a local package which require a recompile.
 If FORCE is non-nil, force recompile of all found `.el' files."
   (byte-recompile-directory dir 0 force))
 
+(defun emacsc/recompile-site-lisp-packages ()
+  "Compile or recompile site-lisp packages."
+  (interactive)
+  (emacsc/recompile-packages
+   (expand-file-name "site-lisp" user-emacs-directory) t))
+
+(defun emacsc/recompile-elpa-packages ()
+  "Compile or recompile elpa packages."
+  (interactive)
+  (emacsc/recompile-packages package-user-dir t))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here

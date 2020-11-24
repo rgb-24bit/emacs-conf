@@ -15,5 +15,16 @@
   (interactive)
   (find-file-existing emacsc-environ-file))
 
+(defun emacsc/load-environ-config ()
+  "Load user init file."
+  (interactive)
+  (when (file-exists-p user-init-file)
+    (load user-init-file)))
+
+(defun emacsc/open-init-file ()
+  "Open user init file."
+  (interactive)
+  (find-file-existing user-init-file))
+
 (provide 'core-environ)
 ;;; core-environ.el ends here

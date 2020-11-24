@@ -18,6 +18,7 @@
 (require 'core-packages)
 (require 'core-themes)
 (require 'core-environ)
+(require 'core-keybindings)
 
 (provide 'core)
 ;;; core.el ends here
