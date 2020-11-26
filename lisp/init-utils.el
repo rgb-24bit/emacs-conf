@@ -90,5 +90,12 @@
       which-key-use-C-h-for-paging t
       which-key-allow-evil-operators t)
 
+;; =============================================================================
+;; avy
+;; =============================================================================
+
+(use-package avy
+  :bind ("C-:" . avy-goto-char-in-line))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
