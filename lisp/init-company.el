@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package company
-  :command global-company-mode
+  :commands global-company-mode
   :init
   (progn
     (setq company-idle-delay 0.2
