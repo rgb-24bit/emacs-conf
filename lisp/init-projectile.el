@@ -43,7 +43,13 @@
           projectile-known-projects-file (concat emacsc-cache-directory
                                                  "projectile-bookmarks.eld")))
   :config
-  (projectile-mode))
+  (progn
+    (emacsc-leader-def
+     "p f" 'projectile-find-file
+     "p d" 'projectile-find-dir
+     "p p" 'projectile-switch-project)
+
+    (projectile-mode)))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

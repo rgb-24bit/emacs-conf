@@ -17,15 +17,17 @@
                 ivy-dynamic-exhibit-delay-ms 150
                 ivy-use-selectable-prompt t)
 
-  ;; IDO-style directory navigation
-  (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
-  (dolist (k '("C-j" "C-RET"))
-    (define-key ivy-minibuffer-map (kbd k) #'ivy-immediate-done))
+  ;; mappings to quit minibuffer or enter transient state
+  (define-key ivy-minibuffer-map [escape] 'minibuffer-keyboard-quit)
+  (define-key ivy-minibuffer-map (kbd "M-SPC") 'hydra-ivy/body)
+  (define-key ivy-minibuffer-map (kbd "C-<return>") #'ivy-alt-done)
 
-  (define-key ivy-minibuffer-map (kbd "<up>") #'ivy-previous-line-or-history)
-  (define-key ivy-minibuffer-map (kbd "<down>") #'ivy-next-line-or-history)
+  (when ivy-ret-visits-directory
+    (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+    (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-done))
 
-  (define-key ivy-occur-mode-map (kbd "C-c C-q") #'ivy-wgrep-change-to-wgrep-mode))
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  (global-set-key (kbd "<f6>") 'ivy-resume))
 
 (add-hook 'after-init-hook 'ivy-mode)
 

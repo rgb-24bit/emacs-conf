@@ -11,7 +11,7 @@
 
 ;; Install into separate package dirs for each Emacs version, to prevent bytecode incompatibility
 (setq package-user-dir
-      (expand-file-name (format "elpa-%s.%s" emacs-major-version emacs-minor-version)
+      (expand-file-name (format "elpa/%s.%s" emacs-major-version emacs-minor-version)
                         user-emacs-directory))
 
 ;; ELPA Mirror Settings (Mirror Source for Emacs China)

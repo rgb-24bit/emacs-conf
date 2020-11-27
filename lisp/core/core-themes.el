@@ -72,6 +72,7 @@
 ;; =============================================================================
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'text-mode-hook 'display-line-numbers-mode)
 
 (setq display-line-numbers-width-start t)
 

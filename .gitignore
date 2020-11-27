@@ -16,3 +16,4 @@ elpa-*
 
 # emacs
 custom.el
+.cache
