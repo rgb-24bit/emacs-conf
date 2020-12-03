@@ -76,5 +76,13 @@
 (use-package avy
   :bind ("C-:" . avy-goto-char-in-line))
 
+;; =============================================================================
+;; code folding
+;; =============================================================================
+
+(require origami)
+
+(add-hook 'prog-mode-hook 'origami-mode)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
