@@ -34,9 +34,6 @@
 [submodule "site-lisp/avy"]
 	path = site-lisp/avy
 	url = https://github.com/abo-abo/avy.git
-[submodule "site-lisp/origami"]
-	path = site-lisp/origami
-	url = https://github.com/gregsexton/origami.el.git
 [submodule "site-lisp/s"]
 	path = site-lisp/s
 	url = https://github.com/magnars/s.el.git
