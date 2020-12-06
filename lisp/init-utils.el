@@ -80,7 +80,7 @@
 ;; code folding
 ;; =============================================================================
 
-(require origami)
+(require 'origami)
 
 (add-hook 'prog-mode-hook 'origami-mode)
 
