@@ -38,10 +38,10 @@
       (setq  projectile-indexing-method 'alien
              projectile-generic-command "find . -type f"))
     (setq projectile-sort-order 'recentf
-          projectile-cache-file (concat emacsc-cache-directory
-                                        "projectile.cache")
-          projectile-known-projects-file (concat emacsc-cache-directory
-                                                 "projectile-bookmarks.eld")))
+          projectile-cache-file (expand-file-name "projectile.cache"
+                                                  emacsc-cache-directory)
+          projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld"
+                                                           emacsc-cache-directory)))
   :config
   (progn
     (emacsc-leader-def
