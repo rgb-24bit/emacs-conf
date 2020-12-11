@@ -23,6 +23,5 @@
             ("payee" "ledger -f %(ledger-file) reg @%(payee) --date-format %Y/%m/%d")
             ("account" "ledger -f %(ledger-file) reg %(account) --date-format %Y/%m/%d")))))
 
-  (provide 'init-ledger)
-
+(provide 'init-ledger)
 ;;; init-ledger.el ends here
