@@ -51,11 +51,11 @@
               '((sequence "TODO(t!)" "NEXT(n)" "WAIT(w)" "|" "DONE(d@/!)" "ABORT(a@/!)")))))))
 
 (use-package org-superstar
-  :defer t
+  :commands (org-superstar-mode)
   :init (add-hook 'org-mode-hook 'org-superstar-mode))
 
 (use-package toc-org
-  :defer t
+  :commands (toc-org-enable)
   :init
   (progn
     (setq toc-org-max-depth 10)
