@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: dt
+# key: dt
+# --
+#+HTML: <details><summary><i>$1</i></summary>
+
+$0
+
+#+HTML: </details>

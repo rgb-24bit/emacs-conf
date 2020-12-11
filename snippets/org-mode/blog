@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: blog
+# key: blog
+# --
+#+TITLE:      $1
+#+AUTHOR:     rgb-24bit
+#+EMAIL:      rgb-24bit@foxmail.com
+#+DATE:       $2
+
+* 目录                                                    :TOC_4_gh:noexport:
+
+$0
