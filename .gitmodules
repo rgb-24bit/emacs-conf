@@ -40,3 +40,9 @@
 [submodule "site-lisp/ledger-mode"]
 	path = site-lisp/ledger-mode
 	url = https://github.com/ledger/ledger-mode.git
+[submodule "site-lisp/powerline"]
+	path = site-lisp/powerline
+	url = https://github.com/milkypostman/powerline.git
+[submodule "site-lisp/spaceline"]
+	path = site-lisp/spaceline
+	url = https://github.com/TheBB/spaceline.git
