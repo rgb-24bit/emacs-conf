@@ -31,40 +31,9 @@
 
 (use-package winum :config (winum-mode))
 
-;; (use-package telephone-line
-;;   :config
-;;   (progn
-;;     (telephone-line-defsegment* telephone-line-datetime-segment ()
-;;                                 `(,(format-time-string "%m-%d %k:%M")))
 
-;;     (setq telephone-line-lhs
-;;           '((evil     . (telephone-line-window-number-segment))
-;;             (accent  . (telephone-line-buffer-modified-segment
-;;                        telephone-line-filesize-segment
-;;                        telephone-line-buffer-name-segment))
-;;             (nil   . (telephone-line-major-mode-segment))))
-
-;;     (setq telephone-line-rhs
-;;           '((nil     . (telephone-line-atom-encoding-segment
-;;                          telephone-line-atom-eol-segment))
-;;             (accent      . (telephone-line-datetime-segment))
-;;             (evil  . (telephone-line-airline-position-segment))))
-
-;;     (telephone-line-mode)))
-
-
-(use-package spaceline-config
-  :config
-  (progn
-    (spaceline-spacemacs-theme)
-
-    (spaceline-toggle-minor-modes-off)
-
-    (spaceline-define-segment datetime
-      (format-time-string "%m-%d %k:%M"))
-    (spaceline-spacemacs-theme 'datetime)))
-
-
+(use-package powerline
+  :config (powerline-default-theme))
 
 ;; =============================================================================
 ;; init dashboard
