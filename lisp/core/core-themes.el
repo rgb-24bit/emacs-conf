@@ -2,6 +2,9 @@
 
 ;;; Code:
 
+(defvar emacsc-powerline-scale 1.0
+  "allows to quickly tweak the mode-line size to make separators look not too crappy.")
+
 ;; =============================================================================
 ;; init themes
 ;; =============================================================================
@@ -30,6 +33,10 @@
 ;; =============================================================================
 
 (use-package winum :config (winum-mode))
+
+(defun emacsc/compute-mode-line-height (scale)
+  "Return an adjusted mode-line height."
+  (truncate (* scale (frame-char-height))))
 
 (use-package powerline
   :config
@@ -88,7 +95,8 @@
                                          )))
                          (concat (powerline-render lhs)
                                  (powerline-fill face2 (powerline-width rhs))
-                                 (powerline-render rhs)))))))
+                                 (powerline-render rhs))))))
+      powerline-height (emacsc/compute-mode-line-height emacsc-powerline-scale))
     (powerline-emacsc-theme)))
 
 ;; =============================================================================
