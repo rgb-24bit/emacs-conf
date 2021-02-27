@@ -29,6 +29,7 @@
  ;; funcs
  "TAB"   'emacsc/alternate-buffer
  "j ="   'emacsc/indent-region-or-buffer
+ "b d"   'emacsc/kill-this-buffer
  )
 
 ;; =============================================================================

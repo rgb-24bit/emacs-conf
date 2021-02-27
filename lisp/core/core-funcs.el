@@ -60,5 +60,12 @@ current window."
 	(message "Indented buffer.")))
     (whitespace-cleanup)))
 
+(defun emacsc/kill-this-buffer (&optional arg)
+  "Kill the current buffer."
+  (interactive "P")
+  (if (window-minibuffer-p)
+      (abort-recursive-edit)
+    (kill-buffer)))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here

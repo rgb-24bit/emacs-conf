@@ -58,6 +58,7 @@
 (require 'init-projectile)
 (require 'init-ivy)
 (require 'init-company)
+(require 'init-ledger)
 
 (when (file-exists-p custom-file)
   (load custom-file))
