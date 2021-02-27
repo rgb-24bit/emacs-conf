@@ -103,5 +103,13 @@
 
 (add-hook 'prog-mode-hook 'show-paren-mode)
 
+;; =============================================================================
+;; undo-tree
+;; =============================================================================
+
+(require 'undo-tree)
+
+(add-hook 'after-init-hook 'global-undo-tree-mode)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
