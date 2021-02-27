@@ -24,8 +24,11 @@
  "f e d" 'emacsc/open-init-file
  "f e p" 'emacsc/open-environ-config
  "f e R" 'emacsc/load-init-file
- ;; recompile packages
- "f e c" 'emacsc/recompile-site-lisp-packages
+ ;; recompile packages=
+ "f e c" 'emacsc/recompgile-site-lisp-packages
+ ;; funcs
+ "TAB"   'emacsc/alternate-buffer
+ "j ="   'emacsc/indent-region-or-buffer
  )
 
 ;; =============================================================================

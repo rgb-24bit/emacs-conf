@@ -97,5 +97,11 @@
 ;; https://emacs.stackexchange.com/questions/3676/how-to-enter-view-only-mode-when-browsing-emacs-source-code-from-help
 (add-hook 'find-function-after-hook 'view-mode)
 
+;; =============================================================================
+;; show parent
+;; =============================================================================
+
+(add-hook 'prog-mode-hook 'show-paren-mode)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

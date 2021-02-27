@@ -26,6 +26,25 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;; =============================================================================
+;; Pre config
+;; =============================================================================
+
+(set-face-attribute
+ 'default nil
+ :font (font-spec :name "-outline-Source Code Pro-bold-italic-normal-mono-*-*-*-*-c-*-iso10646-1"
+                  :weight 'normal
+                  :slant 'normal
+                  :size 10.0))
+ (dolist (charset '(kana han symbol cjk-misc bopomofo))
+   (set-fontset-font
+    (frame-parameter nil 'font)
+    charset
+    (font-spec :name "-outline-微软雅黑-normal-normal-normal-sans-*-*-*-*-p-*-iso10646-1"
+               :weight 'normal
+               :slant 'normal
+               :size 12.0)))
+
+;; =============================================================================
 ;; Bootstrap config
 ;; =============================================================================
 
@@ -39,8 +58,6 @@
 (require 'init-projectile)
 (require 'init-ivy)
 (require 'init-company)
-
-(emacsc/load-environ-config)
 
 (when (file-exists-p custom-file)
   (load custom-file))

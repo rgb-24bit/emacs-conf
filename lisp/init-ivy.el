@@ -40,7 +40,12 @@
                   (woman . "^")))
   ;; I prefer the default behaviour or cycling in place, or
   ;; explicit use of browse-kill-ring
-  (define-key counsel-mode-map [remap yank-pop] nil))
+  (define-key counsel-mode-map [remap yank-pop] nil)
+
+  ;; keybindings
+  (global-set-key (kbd "C-x C-r") 'counsel-recentf)
+
+  (emacsc-leader-def "s p" 'counsel-rg))
 
 (add-hook 'after-init-hook 'counsel-mode)
 
@@ -49,6 +54,8 @@
 ;; =============================================================================
 
 (require 'swiper)
+
+(global-set-key "\C-s" 'swiper)
 
 (provide 'init-ivy)
 ;;; init-ivy.el ends here

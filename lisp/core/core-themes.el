@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(defvar emacsc-powerline-scale 1.0
+(defvar emacsc-powerline-scale (if emacsc/system-is-windows 0.5 1.0)
   "allows to quickly tweak the mode-line size to make separators look not too crappy.")
 
 ;; =============================================================================
@@ -100,6 +100,14 @@
     (powerline-emacsc-theme)))
 
 ;; =============================================================================
+;; display time
+;; =============================================================================
+
+(display-time-mode 1)
+
+(setq display-time-24hr-format t)
+
+;; =============================================================================
 ;; init dashboard
 ;; =============================================================================
 
@@ -129,7 +137,8 @@
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;; (menu-bar-mode -1)
+(when (not emacsc/system-is-mac)
+  (menu-bar-mode -1))
 (tooltip-mode -1)
 
 (provide 'core-themes)

@@ -24,5 +24,41 @@ If FORCE is non-nil, force recompile of all found `.el' files."
   (interactive)
   (emacsc/recompile-packages package-user-dir t))
 
+(defun emacsc/load-init-config ()
+  "Load user init file."
+  (interactive)
+  (when (file-exists-p user-init-file)
+    (load user-init-file)))
+
+(defun emacsc/open-init-file ()
+  "Open user init file."
+  (interactive)
+  (find-file-existing user-init-file))
+
+(defun emacsc/alternate-buffer (&optional window)
+  "Switch back and forth between current and last buffer in the
+current window."
+  (interactive)
+  (cl-destructuring-bind (buf start pos)
+      (cl-find (window-buffer window) (window-prev-buffers)
+	       :key #'car :test-not #'eq)
+    (list (other-buffer) nil nil)
+    (if (not buf)
+	(message "Last buffer not found.")
+      (set-window-buffer-start-and-point window buf start pos))))
+
+(defun emacsc/indent-region-or-buffer ()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+	(progn
+	  (indent-region (region-beginning) (region-end))
+	  (message "Indented selected region."))
+      (progn
+	(indent-region (point-min) (point-max))
+	(message "Indented buffer.")))
+    (whitespace-cleanup)))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here
