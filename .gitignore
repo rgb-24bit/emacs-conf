@@ -19,3 +19,4 @@ custom.el
 .cache
 server
 eaf
+projectile-bookmarks.eld

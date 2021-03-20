@@ -52,11 +52,12 @@
 
 (use-package org-agenda
   :defer t
-  :commands (org-agenda))
+  :commands (org-agenda)
+  :config
+  (define-key org-agenda-mode-map (kbd "M-m") nil))
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
-(define-key org-agenda-mode-map (kbd "M-m") nil)
 
 (use-package org-superstar
   :commands (org-superstar-mode)
