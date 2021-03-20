@@ -31,12 +31,9 @@
 
 (defun emacsc/add-subdirs-to-load-path (dir)
   "Recursive add directories to `load-path'."
-  (let ((default-directory (file-name-as-directory dir))
-        (orig-load-path load-path))
-    (setq load-path (cons dir nil))
-    (normal-top-level-add-subdirs-to-load-path)
-    (nconc load-path orig-load-path)
-    (delete-dups load-path)))
+  (mapcar
+   (lambda (path) (add-to-list 'load-path path))
+   (delete-dups (mapcar 'file-name-directory (directory-files-recursively dir "\.el$")))))
 
 (defun emacsc/add-site-lisp-to-load-path ()
   "Add both site-lisp and its immediate subdirs to `load-path'."

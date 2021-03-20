@@ -5,6 +5,8 @@
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
 ;;(setq debug-on-error t)
 
+(profiler-start 'cpu+mem)
+
 ;; =============================================================================
 ;; define base lisp dirctory
 ;; =============================================================================
@@ -59,6 +61,7 @@
 (require 'init-ivy)
 (require 'init-company)
 (require 'init-ledger)
+(require 'init-eaf)
 
 (when (file-exists-p custom-file)
   (load custom-file))

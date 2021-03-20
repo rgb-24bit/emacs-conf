@@ -28,8 +28,9 @@
  "f e c" 'emacsc/recompgile-site-lisp-packages
  ;; funcs
  "TAB"   'emacsc/alternate-buffer
- "j ="   'emacsc/indent-region-or-buffer
  "b d"   'emacsc/kill-this-buffer
+ "j ="   'emacsc/indent-region-or-buffer
+ "T F"   'emacsc/toggle-frame-fullscreen
  )
 
 ;; =============================================================================

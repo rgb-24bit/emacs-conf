@@ -67,5 +67,36 @@ current window."
       (abort-recursive-edit)
     (kill-buffer)))
 
+(defun emacsc/toggle-frame-fullscreen (&optional frame)
+  "Toggle fullscreen state of FRAME.
+Make selected frame fullscreen or restore its previous size
+if it is already fullscreen.
+
+Before making the frame fullscreen remember the current value of
+the frame's `fullscreen' parameter in the `fullscreen-restore'
+parameter of the frame.  That value is used to restore the
+frame's fullscreen state when toggling fullscreen the next time.
+
+Note that with some window managers you may have to set
+`frame-resize-pixelwise' to non-nil in order to make a frame
+appear truly fullscreen.  In addition, you may have to set
+`x-frame-normalize-before-maximize' in order to enable
+transitions from one fullscreen state to another.
+
+See also `toggle-frame-maximized'."
+  (interactive)
+  (let ((fullscreen (frame-parameter frame 'fullscreen)))
+    (if (memq fullscreen '(fullscreen fullboth))
+	(let ((fullscreen-restore (frame-parameter frame 'fullscreen-restore)))
+	  (if (memq fullscreen-restore '(maximized fullheight fullwidth))
+	      (set-frame-parameter frame 'fullscreen fullscreen-restore)
+	    (set-frame-parameter frame 'fullscreen nil)))
+      (modify-frame-parameters
+       frame `((fullscreen . fullboth) (fullscreen-restore . ,fullscreen))))
+    ;; Manipulating a frame without waiting for the fullscreen
+    ;; animation to complete can cause a crash, or other unexpected
+    ;; behavior, on macOS (bug#28496).
+    (when (featurep 'cocoa) (sleep-for 0.5))))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here
