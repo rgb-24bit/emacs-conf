@@ -50,6 +50,14 @@
         (setq org-todo-keywords
               '((sequence "TODO(t!)" "NEXT(n)" "WAIT(w)" "|" "DONE(d@/!)" "ABORT(a@/!)")))))))
 
+(use-package org-agenda
+  :defer t
+  :commands (org-agenda))
+
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(define-key org-agenda-mode-map (kbd "M-m") nil)
+
 (use-package org-superstar
   :commands (org-superstar-mode)
   :init (add-hook 'org-mode-hook 'org-superstar-mode))
