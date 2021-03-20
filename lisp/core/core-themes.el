@@ -32,80 +32,53 @@
 ;; init modeline
 ;; =============================================================================
 
-(use-package winum :config (winum-mode))
+;; (use-package winum
+;;   :init
+;;   (setq winum-keymap
+;; 	(let ((map (make-sparse-keymap)))
+;; 	  (define-key map (kbd "C-`") 'winum-select-window-by-number)
+;; 	  (define-key map (kbd "C-²") 'winum-select-window-by-number)
+;; 	  (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+;; 	  (define-key map (kbd "M-1") 'winum-select-window-1)
+;; 	  (define-key map (kbd "M-2") 'winum-select-window-2)
+;; 	  (define-key map (kbd "M-3") 'winum-select-window-3)
+;; 	  (define-key map (kbd "M-4") 'winum-select-window-4)
+;; 	  (define-key map (kbd "M-5") 'winum-select-window-5)
+;; 	  (define-key map (kbd "M-6") 'winum-select-window-6)
+;; 	  (define-key map (kbd "M-7") 'winum-select-window-7)
+;; 	  (define-key map (kbd "M-8") 'winum-select-window-8)
+;; 	  map))
+;;   :hook (after-init . winum-mode))
+
+(use-package window-numbering
+  :hook (after-init . window-numbering-mode))
 
 (defun emacsc/compute-mode-line-height (scale)
   "Return an adjusted mode-line height."
   (truncate (* scale (frame-char-height))))
 
 (use-package powerline
+  :defer t
+  :init
+  (setq-default powerline-height (emacsc/compute-mode-line-height emacsc-powerline-scale)))
+
+(use-package maple-modeline
+  :hook (after-init . maple-modeline-mode)
   :config
-  (progn
-    (defun powerline-emacsc-theme ()
-      "Setup the emacsc mode-line."
-      (interactive)
-      (setq-default mode-line-format
-		    '("%e"
-		      (:eval
-		       (let* ((active (powerline-selected-window-active))
-			      (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-			      (mode-line (if active 'mode-line 'mode-line-inactive))
-			      (face0 (if active 'powerline-active0 'powerline-inactive0))
-			      (face1 (if active 'powerline-active1 'powerline-inactive1))
-			      (face2 (if active 'powerline-active2 'powerline-inactive2))
-			      (separator-left (intern (format "powerline-%s-%s"
-							      (powerline-current-separator)
-							      (car powerline-default-separator-dir))))
-			      (separator-right (intern (format "powerline-%s-%s"
-							       (powerline-current-separator)
-							       (cdr powerline-default-separator-dir))))
-			      (lhs (list (powerline-raw "%*" face0 'l)
-					 (when powerline-display-buffer-size
-					   (powerline-buffer-size face0 'l))
-					 (when powerline-display-mule-info
-					   (powerline-raw mode-line-mule-info face0 'l))
-					 (powerline-buffer-id `(mode-line-buffer-id ,face0) 'l)
-					 (when (and (boundp 'which-func-mode) which-func-mode)
-					   (powerline-raw which-func-format face0 'l))
-					 (powerline-raw " " face0)
-					 (funcall separator-left face0 face1)
-					 (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
-					   (powerline-raw erc-modified-channels-object face1 'l))
-					 (powerline-major-mode face1 'l)
-					 (powerline-process face1)
-					 (powerline-narrow face1 'l)
-					 (powerline-raw " " face1)
-					 (funcall separator-left face1 face2)
-					 (powerline-vc face2 'r)
-					 (when (bound-and-true-p nyan-mode)
-					   (powerline-raw (list (nyan-create)) face2 'l))))
-			      (rhs (list (powerline-raw global-mode-string face2 'r)
-					 (funcall separator-right face2 face1)
-					 (unless window-system
-					   (powerline-raw (char-to-string #xe0a1) face1 'l))
-					 (powerline-raw "%4l" face1 'l)
-					 (powerline-raw ":" face1 'l)
-					 (powerline-raw "%3c" face1 'r)
-					 (funcall separator-right face1 face0)
-					 (powerline-raw " " face0)
-					 (powerline-raw "%6p" face0 'r)
-					 (when powerline-display-hud
-					   (powerline-hud face0 face2))
-					 (powerline-fill face0 0)
-					 )))
-			 (concat (powerline-render lhs)
-				 (powerline-fill face2 (powerline-width rhs))
-				 (powerline-render rhs)))))
-		    powerline-height (emacsc/compute-mode-line-height emacsc-powerline-scale)))
-    (powerline-emacsc-theme)))
+  ;; standard, minimal, sidebar
+  (setq maple-modeline-style 'standard)
+  ;; show icon, just for version-control
+  (setq maple-modeline-icon nil)
+  ;; standard or auto or some number
+  (setq maple-modeline-width 'standard))
 
 ;; =============================================================================
 ;; display time
 ;; =============================================================================
 
-(display-time-mode 1)
+;; (display-time-mode -1)
 
-(setq display-time-24hr-format t)
+;; (setq display-time-24hr-format t)
 
 ;; =============================================================================
 ;; init dashboard
