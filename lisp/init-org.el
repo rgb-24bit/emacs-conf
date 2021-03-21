@@ -29,6 +29,8 @@
     (setq org-src-fontify-natively t)
     ;; startup with inline image
     (setq org-startup-with-inline-images t)
+    ;; not change headline face
+    (setq org-fontify-done-headline nil)
     ;; simple template
     (require 'org-tempo)
     ;; https://github.com/syl20bnr/spacemacs/commit/145126875731e8ee38770b2adf709805f23672f7

@@ -20,3 +20,4 @@ custom.el
 server
 eaf
 projectile-bookmarks.eld
+smex-items

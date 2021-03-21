@@ -11,12 +11,12 @@
 
 (with-eval-after-load 'ivy
   (setq-default ivy-use-virtual-buffers t
-                ivy-virtual-abbreviate 'fullpath
-                ivy-count-format ""
-                projectile-completion-system 'ivy
-                ivy-magic-tilde nil
-                ivy-dynamic-exhibit-delay-ms 150
-                ivy-use-selectable-prompt t)
+		ivy-virtual-abbreviate 'fullpath
+		ivy-count-format ""
+		projectile-completion-system 'ivy
+		ivy-magic-tilde nil
+		ivy-dynamic-exhibit-delay-ms 150
+		ivy-use-selectable-prompt t)
 
   ;; mappings to quit minibuffer or enter transient state
   (define-key ivy-minibuffer-map [escape] 'minibuffer-keyboard-quit)
@@ -37,8 +37,8 @@
 
 (with-eval-after-load 'counsel
   (setq-default ivy-initial-inputs-alist
-                '((Man-completion-table . "^")
-                  (woman . "^")))
+		'((Man-completion-table . "^")
+		  (woman . "^")))
   ;; I prefer the default behaviour or cycling in place, or
   ;; explicit use of browse-kill-ring
   (define-key counsel-mode-map [remap yank-pop] nil)
@@ -46,7 +46,9 @@
   ;; keybindings
   (global-set-key (kbd "C-x C-r") 'counsel-recentf)
 
-  (emacsc-leader-def "s p" 'counsel-rg))
+  (emacsc-leader-def
+    "s"   '(:ignore t :which-key "search")
+    "s p" 'counsel-rg))
 
 (add-hook 'after-init-hook 'counsel-mode)
 

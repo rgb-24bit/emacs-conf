@@ -76,7 +76,10 @@
   ;; show icon, just for version-control
   (setq maple-modeline-icon nil)
   ;; standard or auto or some number
-  (setq maple-modeline-width 'standard))
+  (setq maple-modeline-width 'standard)
+  ;; hidden message on modeline
+  (setq maple-modeline-message-p nil)
+  )
 
 ;; =============================================================================
 ;; display time
