@@ -64,5 +64,18 @@
   "T F"   'emacsc/toggle-frame-fullscreen
   )
 
+;; =============================================================================
+;; macos key modifier
+;; =============================================================================
+
+(when emacsc-system-is-mac
+  (setq mac-command-modifier       'meta
+	mac-option-modifier        'meta
+	mac-function-modifier      'control
+	mac-control-modifier       'control
+	mac-right-command-modifier 'left
+	mac-right-option-modifier  'left
+	mac-right-control-modifier 'left))
+
 (provide 'core-keybindings)
 ;;; core-keybindings.el ends here
