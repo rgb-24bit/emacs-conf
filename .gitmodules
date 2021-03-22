@@ -61,3 +61,12 @@
 [submodule "site-lisp/emacs-libvterm"]
 	path = site-lisp/emacs-libvterm
 	url = https://github.com/akermu/emacs-libvterm.git
+[submodule "site-lisp/magit"]
+	path = site-lisp/magit
+	url = https://github.com/magit/magit.git
+[submodule "site-lisp/transient"]
+	path = site-lisp/transient
+	url = https://github.com/magit/transient.git
+[submodule "site-lisp/with-editor"]
+	path = site-lisp/with-editor
+	url = https://github.com/magit/with-editor.git
