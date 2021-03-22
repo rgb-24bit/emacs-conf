@@ -86,6 +86,7 @@
 (require 'init-company)
 (require 'init-ledger)
 (require 'init-eaf)
+(require 'init-lsp)
 (require 'init-rust)
 
 (when emacsc-system-is-mac

@@ -70,3 +70,9 @@
 [submodule "site-lisp/with-editor"]
 	path = site-lisp/with-editor
 	url = https://github.com/magit/with-editor.git
+[submodule "site-lisp/posframe"]
+	path = site-lisp/posframe
+	url = https://github.com/tumashu/posframe.git
+[submodule "site-lisp/nox"]
+	path = site-lisp/nox
+	url = https://github.com/manateelazycat/nox.git
