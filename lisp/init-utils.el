@@ -52,14 +52,14 @@
   :init
   (progn
     (setq recentf-save-file (expand-file-name "recentf" emacsc-cache-directory)
-          recentf-max-saved-items 1000
-          recentf-auto-cleanup 'never
-          recentf-auto-save-timer (run-with-idle-timer 600 t
-                                                       'recentf-save-list)))
+	  recentf-max-saved-items 1000
+	  recentf-auto-cleanup 'never
+	  recentf-auto-save-timer (run-with-idle-timer 600 t
+						       'recentf-save-list)))
   :config
   (progn
     (add-to-list 'recentf-exclude
-                 (recentf-expand-file-name emacsc-cache-directory))
+		 (recentf-expand-file-name emacsc-cache-directory))
     (add-to-list 'recentf-exclude (recentf-expand-file-name package-user-dir))
     (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")))
 
@@ -110,6 +110,25 @@
 (require 'undo-tree)
 
 (add-hook 'after-init-hook 'global-undo-tree-mode)
+
+;; =============================================================================
+;; clean-aindent-mode
+;; =============================================================================
+
+(use-package clean-aindent-mode
+  :config
+  (progn
+    (clean-aindent-mode)
+
+    (defun emacsc//put-clean-aindent-last ()
+      "Put `clean-aindent--check-last-point` to end of `post-command-hook`.
+This functions tries to ensure that clean-aindent checks for indent
+operations after each indent operations have been done."
+      (when clean-aindent-mode
+	(remove-hook 'post-command-hook 'clean-aindent--check-last-point)
+	(add-hook 'post-command-hook 'clean-aindent--check-last-point t)))
+
+    (add-hook 'prog-mode-hook 'emacsc//put-clean-aindent-last t)))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

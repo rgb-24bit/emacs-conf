@@ -55,3 +55,6 @@
 [submodule "site-lisp/smex"]
 	path = site-lisp/smex
 	url = https://github.com/nonsequitur/smex.git
+[submodule "site-lisp/clean-aindent-mode"]
+	path = site-lisp/clean-aindent-mode
+	url = https://github.com/pmarinov/clean-aindent-mode.git
