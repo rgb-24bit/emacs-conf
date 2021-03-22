@@ -76,3 +76,6 @@
 [submodule "site-lisp/nox"]
 	path = site-lisp/nox
 	url = https://github.com/manateelazycat/nox.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git

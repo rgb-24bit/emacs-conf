@@ -88,6 +88,7 @@
 (require 'init-eaf)
 (require 'init-lsp)
 (require 'init-rust)
+(require 'init-md)
 
 (when emacsc-system-is-mac
   (require 'init-vterm)
