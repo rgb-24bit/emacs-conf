@@ -88,6 +88,9 @@
 (require 'init-eaf)
 (require 'init-rust)
 
+(when emacsc-system-is-mac
+  (require 'init-vterm))
+
 (when (file-exists-p custom-file)
   (load custom-file))
 

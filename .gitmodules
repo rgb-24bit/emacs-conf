@@ -58,3 +58,6 @@
 [submodule "site-lisp/clean-aindent-mode"]
 	path = site-lisp/clean-aindent-mode
 	url = https://github.com/pmarinov/clean-aindent-mode.git
+[submodule "site-lisp/emacs-libvterm"]
+	path = site-lisp/emacs-libvterm
+	url = https://github.com/akermu/emacs-libvterm.git
