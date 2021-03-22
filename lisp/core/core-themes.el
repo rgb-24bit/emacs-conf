@@ -71,8 +71,16 @@
 (use-package maple-modeline
   :hook (after-init . maple-modeline-mode)
   :config
+  (maple-modeline-define datetime
+    :format
+    (format-time-string "%m-%d %k:%M"))
+
+  (maple-modeline-set emacsc
+    :left '((window-number :left (bar :left "")) macro iedit anzu buffer-info major-mode flycheck version-control remote-host region)
+    :right '(message narrow python lsp misc-info process datetime count position))
+
   ;; standard, minimal, sidebar
-  (setq maple-modeline-style 'standard)
+  (setq maple-modeline-style 'emacsc)
   ;; show icon, just for version-control
   (setq maple-modeline-icon nil)
   ;; standard or auto or some number
