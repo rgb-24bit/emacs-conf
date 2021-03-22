@@ -130,5 +130,45 @@ operations after each indent operations have been done."
 
     (add-hook 'prog-mode-hook 'emacsc//put-clean-aindent-last t)))
 
+;; =============================================================================
+;; expan-region
+;; =============================================================================
+
+(use-package expand-region
+  :bind (("C-M-." . er/expand-region)
+	 ("C-M->" . er/contract-region)))
+
+;; =============================================================================
+;; highlight symbol
+;; =============================================================================
+
+(defun emacsc/regexp-at-point ()
+  "if region active, return the region,
+otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
+  (if (region-active-p)
+      (buffer-substring-no-properties
+       (region-beginning) (region-end))
+    (format "\\_<%s\\_>" (thing-at-point 'symbol t))))
+
+(defun emacsc/toggle-highlight-at-point ()
+  "Toggle highlight at point (region or symbol)."
+  (interactive)
+  (require 'hi-lock)
+  (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns))
+	(hi-regexp-at-pt (emacsc/regexp-at-point))
+	(hi-lock-auto-select-face t))
+    (if (member hi-regexp-at-pt hi-regexp-list)
+	(unhighlight-regexp hi-regexp-at-pt)
+      (highlight-phrase hi-regexp-at-pt (hi-lock-read-face-name)))
+    (deactivate-mark)))
+
+(defun emacsc/clear-all-highlight ()
+  "clear all highlight."
+  (interactive)
+  (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns)))
+    (mapcar 'unhighlight-regexp hi-regexp-list)))
+
+(global-set-key (kbd "C-'") 'emacsc/toggle-highlight-at-point)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
