@@ -9,9 +9,9 @@
 ;; load core code
 ;; =============================================================================
 
+(require 'core-packages)
 (require 'core-paths)
 (require 'core-funcs)
-(require 'core-packages)
 (require 'core-themes)
 (require 'core-keybindings)
 (require 'core-defaults)
