@@ -170,5 +170,13 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 
 (global-set-key (kbd "C-'") 'emacsc/toggle-highlight-at-point)
 
+;; =============================================================================
+;; rainbow delimiters
+;; =============================================================================
+
+(use-package rainbow-delimiters
+  :commands rainbow-delimiters-mode
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

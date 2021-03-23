@@ -82,3 +82,6 @@
 [submodule "site-lisp/expand-region.el"]
 	path = site-lisp/expand-region
 	url = https://github.com/magnars/expand-region.el.git
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
