@@ -2,6 +2,8 @@
 
 ;;; Code:
 
+(defvar emacsc-enable-lsp t)
+
 (use-package nox
   :commands (nox-ensure)
   :config

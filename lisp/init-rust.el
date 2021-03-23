@@ -7,7 +7,10 @@
   :config
   (add-hook 'rust-mode-hook
             (lambda () (setq indent-tabs-mode nil)))
-  (add-hook 'rust-mode-hook 'nox-ensure))
+  (defun emacsc//rust-setup-lsp ()
+    (when (and (boundp 'emacsc-enable-lsp) emacsc-enable-lsp)
+      (nox-ensure)))
+  (add-hook 'rust-mode-hook 'emacsc//rust-setup-lsp))
 
 (provide 'init-rust)
 ;;; init-rust.el ends here
