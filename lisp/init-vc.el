@@ -4,13 +4,13 @@
 
 (use-package magit
   :commands (magit-status magit-list-repositories)
+  :init
+  (emacsc-leader-def
+    "g"  '(:ignore t :which-key "git")
+    "gs" 'magit-status
+    "gL" 'magit-list-repositories)
   :config
   (progn
-    (emacsc-leader-def
-      "g"  '(:ignore t :which-key "git")
-      "gs" 'magit-status
-      "gL" 'magit-list-repositories)
-
     (when-let ((git (executable-find "git")))
       (setq magit-git-executable git))
 
@@ -27,5 +27,5 @@
 	    (magit-unstaged-files  . "M")
 	    (magit-staged-files    . "M")))))
 
-  (provide 'init-vc)
+(provide 'init-vc)
 ;;; init-vc.el ends here
