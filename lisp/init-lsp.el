@@ -6,6 +6,27 @@
 
 (use-package nox
   :commands (nox-ensure)
+  :init
+  (progn
+    (defun emacsc//setup-lsp ()
+      "setup the lsp support, when `emacsc-enable-lsp' is t."
+      (when emacsc-enable-lsp)
+      (nox-ensure))
+
+    (dolist (hook (list
+		   'rust-mode-hook
+		   'python-mode-hook
+		   'ruby-mode-hook
+		   'java-mode-hook
+		   'sh-mode-hook
+		   'php-mode-hook
+		   'c-mode-common-hook
+		   'c-mode-hook
+		   'c++-mode-hook
+		   'haskell-mode-hook
+		   'go-mode-hook
+		   ))
+      (add-hook hook 'emacsc//setup-lsp)))
   :config
   (progn
     (general-def nox-mode-map
