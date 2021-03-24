@@ -90,6 +90,7 @@
 (require 'init-rust)
 (require 'init-md)
 (require 'init-lang)
+(require 'init-go)
 
 (when emacsc-system-is-mac
   (require 'init-vterm)
