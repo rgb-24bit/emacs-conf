@@ -47,6 +47,13 @@
     ;; https://github.com/integral-dw/org-superstar-mode#org-superstar-prettify-item-bullets
     (setq org-superstar-prettify-item-bullets nil)
 
+    (defun emacsc//org-delete-element ()
+      "Delete org element."
+      (interactive)
+      (org-mark-element)
+      (kill-region (region-beginning) (region-end)))
+    (define-key org-mode-map (kbd "C-c e d") 'emacsc//org-delete-element)
+
     (with-eval-after-load 'org
       (progn
         ;; ===========================================================================
