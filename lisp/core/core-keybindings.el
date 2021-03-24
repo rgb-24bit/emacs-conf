@@ -45,6 +45,8 @@
 (emacsc-leader-def
   ;; open & load config file
   "f"     '(:ignore t :which-key "files")
+  "f D"   'emacsc/delete-current-buffer-file
+
   "f e"   '(:ignore t :which-key "emacs")
   "f e d" 'emacsc/open-init-file
   "f e p" 'emacsc/open-environ-config

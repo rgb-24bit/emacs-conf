@@ -98,5 +98,21 @@ See also `toggle-frame-maximized'."
     ;; behavior, on macOS (bug#28496).
     (when (featurep 'cocoa) (sleep-for 0.5))))
 
+(defun emacsc/delete-current-buffer-file ()
+  "Removes file connected to current buffer and kills buffer."
+  (interactive)
+  (let ((filename (buffer-file-name))
+	(buffer (current-buffer))
+	(name (buffer-name)))
+    (if (not (and filename (file-exists-p filename)))
+	(ido-kill-buffer)
+      (if (yes-or-no-p
+	   (format "Are you sure you want to delete this file: '%s'?" name))
+	  (progn
+	    (delete-file filename t)
+	    (kill-buffer buffer)
+	    (message "File deleted: '%s'" filename))
+	(message "Canceled: File deletion")))))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here
