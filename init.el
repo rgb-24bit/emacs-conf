@@ -89,6 +89,7 @@
 (require 'init-lsp)
 (require 'init-rust)
 (require 'init-md)
+(require 'init-lang)
 
 (when emacsc-system-is-mac
   (require 'init-vterm)
