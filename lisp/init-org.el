@@ -2,6 +2,11 @@
 
 ;;; Code:
 
+(defcustom emacsc-org-capture-task-file "~/task.org"
+  "org capture task file location.")
+(defcustom emacsc-org-capture-idea-file "~/idea.org"
+  "org capture idea file location.")
+
 (use-package org
   :commands (org-clock-out org-occur-in-agenda-files org-agenda-files orgtbl-mode)
   :defer t
@@ -57,6 +62,23 @@
   :commands (org-agenda)
   :config
   (define-key org-agenda-mode-map (kbd "M-m") nil))
+
+(use-package org-capture
+  :bind (("C-c c" . org-capture))
+  :config
+  ;; Org-capture template settings
+  ;; https://www.zmonster.me/2018/02/28/org-mode-capture.html
+   (setq org-capture-templates
+        '(("t" "Task" entry (file+headline emacsc-org-capture-task-file "Task")
+           "* TODO [#B] %^{HEADLINE} %^g\n  %?"
+           :empty-lines 1)
+          ("i" "Idea")
+          ("io" "Idea.O" entry (file emacsc-org-capture-idea-file)
+           "* Idea.O %^{HEADLINE}\n  %?"
+           :empty-lines 1)
+          ("is" "Idea.S" entry (file emacsc-org-capture-idea-file)
+           "* Idea.S %^{HEADLINE}\n  %?"
+           :empty-lines 1))))
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
