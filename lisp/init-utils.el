@@ -242,5 +242,16 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   (define-key awesome-pair-mode-map (kbd "M-n") 'awesome-pair-jump-left)
   (define-key awesome-pair-mode-map (kbd "M-:") 'awesome-pair-jump-out-pair-and-newline))
 
+;; =============================================================================
+;; mwim
+;; =============================================================================
+
+(use-package mwim
+  :commands (mwim-beginning-of-code-or-line mwim-end-of-line-or-code)
+  :init
+  (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+  (global-set-key (kbd "C-e") 'mwim-end-of-line-or-code))
+
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
