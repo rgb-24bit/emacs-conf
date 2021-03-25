@@ -252,6 +252,14 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
   (global-set-key (kbd "C-e") 'mwim-end-of-line-or-code))
 
+;; =============================================================================
+;; cnfonts
+;; =============================================================================
+
+(use-package cnfonts
+  :commands (cnfonts-edit-profile cnfonts-increase-fontsize cnfonts-decrease-fontsize)
+  :config
+  (setq cnfonts-directory (expand-file-name "cnfonts" emacsc-cache-directory)))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
