@@ -15,5 +15,8 @@
     (define-key view-mode-map (kbd "p") 'scroll-down-line)))
 (add-hook 'find-function-after-hook 'view-mode)
 
+;; typed text replaces the selection if the selection is active
+(delete-selection-mode)
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
