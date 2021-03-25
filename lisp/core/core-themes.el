@@ -105,8 +105,8 @@
   :config
   (progn
     (dashboard-setup-startup-hook)
-    (setq dashboard-banner-logo-title "Welcome to Emacs Dashboard"
-	  dashboard-startup-banner 'logo
+    (setq dashboard-banner-logo-title "Welcome to rgb-24bit's Emacs"
+	  dashboard-startup-banner "~/.emacs.d/banners/bannber.png"
 	  dashboard-center-content t
 	  dashboard-show-shortcuts nil
 	  dashboard-items '((recents  . 5)
