@@ -34,6 +34,10 @@
 
 ;; More friendly file size display
 (setq-default dired-listing-switches "-alh")
+;; Make dired "guess" target directory for some operations, like copy to
+;; directory visited in other split buffer.
+(setq dired-dwim-target t)
+
 
 ;; =============================================================================
 ;; move-text
