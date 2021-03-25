@@ -5,5 +5,8 @@
 (use-package thrift-mode
   :mode "\\.thrift\\'")
 
+(use-package protobuf-mode
+  :mode "\\.proto\\'")
+
 (provide 'init-lang)
 ;;; init-lang.el ends here
