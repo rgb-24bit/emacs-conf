@@ -5,8 +5,11 @@
 (use-package rust-mode
   :mode "\\.rs\\'"
   :config
-  (add-hook 'rust-mode-hook
-            (lambda () (setq indent-tabs-mode nil))))
+  (emacsc-leader-def rust-mode-map
+    "m"     '(:ignore t :which-key "rust")
+
+    "m ="   '(:ignore t :which-key "fromat")
+    "m = =" 'rust-format-buffer))
 
 (provide 'init-rust)
 ;;; init-rust.el ends here
