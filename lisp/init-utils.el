@@ -292,7 +292,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
              thing-cut-filename)
   :init
   (emacsc-leader-def
-    "e"       '(:ignore t :which-key "edit")
+    "e"     '(:ignore t :which-key "edit")
     "e c"   '(:ignore t :which-key "copy")
     "e c w" 'thing-copy-word
     "e c e" 'thing-copy-email

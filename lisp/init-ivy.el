@@ -45,6 +45,7 @@
 
   ;; keybindings
   (global-set-key (kbd "C-x C-r") 'counsel-recentf)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop)
 
   (emacsc-leader-def
     "s"   '(:ignore t :which-key "search")
