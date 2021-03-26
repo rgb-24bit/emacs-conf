@@ -265,5 +265,12 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   :config
   (setq cnfonts-directory (expand-file-name "cnfonts" emacsc-cache-directory)))
 
+;; =============================================================================
+;; restclient
+;; =============================================================================
+
+(use-package restclient
+  :mode ("\\.http\\'" . restclient-mode))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

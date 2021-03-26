@@ -102,3 +102,6 @@
 	path = site-lisp/awesome-pair
 	url = https://github.com/manateelazycat/awesome-pair.git
 	ignore = dirty
+[submodule "site-lisp/restclient"]
+	path = site-lisp/restclient
+	url = https://github.com/pashky/restclient.el.git
