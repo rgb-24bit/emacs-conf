@@ -56,14 +56,14 @@
   :init
   (progn
     (setq recentf-save-file (expand-file-name "recentf" emacsc-cache-directory)
-	  recentf-max-saved-items 1000
-	  recentf-auto-cleanup 'never
-	  recentf-auto-save-timer (run-with-idle-timer 600 t
-						       'recentf-save-list)))
+          recentf-max-saved-items 1000
+          recentf-auto-cleanup 'never
+          recentf-auto-save-timer (run-with-idle-timer 600 t
+                                                       'recentf-save-list)))
   :config
   (progn
     (add-to-list 'recentf-exclude
-		 (recentf-expand-file-name emacsc-cache-directory))
+                 (recentf-expand-file-name emacsc-cache-directory))
     (add-to-list 'recentf-exclude (recentf-expand-file-name package-user-dir))
     (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")))
 
@@ -129,8 +129,8 @@
 This functions tries to ensure that clean-aindent checks for indent
 operations after each indent operations have been done."
       (when clean-aindent-mode
-	(remove-hook 'post-command-hook 'clean-aindent--check-last-point)
-	(add-hook 'post-command-hook 'clean-aindent--check-last-point t)))
+        (remove-hook 'post-command-hook 'clean-aindent--check-last-point)
+        (add-hook 'post-command-hook 'clean-aindent--check-last-point t)))
 
     (add-hook 'prog-mode-hook 'emacsc//put-clean-aindent-last t)))
 
@@ -140,7 +140,7 @@ operations after each indent operations have been done."
 
 (use-package expand-region
   :bind (("C-M-." . er/expand-region)
-	 ("C-M->" . er/contract-region)))
+         ("C-M->" . er/contract-region)))
 
 ;; =============================================================================
 ;; highlight symbol
@@ -159,10 +159,10 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   (interactive)
   (require 'hi-lock)
   (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns))
-	(hi-regexp-at-pt (emacsc/regexp-at-point))
-	(hi-lock-auto-select-face t))
+        (hi-regexp-at-pt (emacsc/regexp-at-point))
+        (hi-lock-auto-select-face t))
     (if (member hi-regexp-at-pt hi-regexp-list)
-	(unhighlight-regexp hi-regexp-at-pt)
+        (unhighlight-regexp hi-regexp-at-pt)
       (highlight-phrase hi-regexp-at-pt (hi-lock-read-face-name)))
     (deactivate-mark)))
 
@@ -190,33 +190,33 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   :commands awesome-pair-mode
   :init
   (dolist (hook (list
-		 'c-mode-common-hook
-		 'c-mode-hook
-		 'c++-mode-hook
-		 'java-mode-hook
-		 'haskell-mode-hook
-		 'emacs-lisp-mode-hook
-		 'lisp-interaction-mode-hook
-		 'lisp-mode-hook
-		 'maxima-mode-hook
-		 'ielm-mode-hook
-		 'sh-mode-hook
-		 'makefile-gmake-mode-hook
-		 'php-mode-hook
-		 'python-mode-hook
-		 'js-mode-hook
-		 'go-mode-hook
-		 'qml-mode-hook
-		 'jade-mode-hook
-		 'css-mode-hook
-		 'ruby-mode-hook
-		 'coffee-mode-hook
-		 'rust-mode-hook
-		 'qmake-mode-hook
-		 'lua-mode-hook
-		 'swift-mode-hook
-		 'minibuffer-inactive-mode-hook
-		 ))
+                 'c-mode-common-hook
+                 'c-mode-hook
+                 'c++-mode-hook
+                 'java-mode-hook
+                 'haskell-mode-hook
+                 'emacs-lisp-mode-hook
+                 'lisp-interaction-mode-hook
+                 'lisp-mode-hook
+                 'maxima-mode-hook
+                 'ielm-mode-hook
+                 'sh-mode-hook
+                 'makefile-gmake-mode-hook
+                 'php-mode-hook
+                 'python-mode-hook
+                 'js-mode-hook
+                 'go-mode-hook
+                 'qml-mode-hook
+                 'jade-mode-hook
+                 'css-mode-hook
+                 'ruby-mode-hook
+                 'coffee-mode-hook
+                 'rust-mode-hook
+                 'qmake-mode-hook
+                 'lua-mode-hook
+                 'swift-mode-hook
+                 'minibuffer-inactive-mode-hook
+                 ))
     (add-hook hook '(lambda () (awesome-pair-mode))))
   :config
   (define-key awesome-pair-mode-map (kbd "(") 'awesome-pair-open-round)
@@ -271,6 +271,43 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 
 (use-package restclient
   :mode ("\\.http\\'" . restclient-mode))
+
+;; =============================================================================
+;; thing-edit
+;; =============================================================================
+
+(use-package thing-edit
+  :commands (thing-copy-word
+             thing-copy-email
+             thing-copy-url
+             thing-copy-line
+             thing-copy-comment
+             thing-copy-filename
+
+             thing-cut-word
+             thing-cut-email
+             thing-cut-url
+             thing-cut-line
+             thing-cut-comment
+             thing-cut-filename)
+  :init
+  (emacsc-leader-def
+    "e"       '(:ignore t :which-key "edit")
+    "e c"   '(:ignore t :which-key "copy")
+    "e c w" 'thing-copy-word
+    "e c e" 'thing-copy-email
+    "e c u" 'thing-copy-url
+    "e c l" 'thing-copy-line
+    "e c c" 'thing-copy-comment
+    "e c f" 'thing-copy-filename
+
+    "e k"   '(:ignore t :which-key "cut")
+    "e k w" 'thing-cut-word
+    "e k e" 'thing-cut-email
+    "e k u" 'thing-cut-url
+    "e k l" 'thing-cut-line
+    "e k c" 'thing-cut-comment
+    "e k f" 'thing-cut-filename))
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
