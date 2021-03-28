@@ -33,5 +33,8 @@
 ;; This should work on Windows and Linux distros.
 (setq delete-by-moving-to-trash t)
 
+;; when t, 27.2 will ignores modifier keys when IME input is used.
+(setq w32-ignore-modifiers-on-IME-input nil)
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
