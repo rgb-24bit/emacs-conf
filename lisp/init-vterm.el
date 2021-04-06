@@ -26,6 +26,10 @@
 
     (add-hook 'vterm-mode-hook 'emacsc//disable-hl-line-mode)))
 
+(use-package shell-pop
+  :defer t
+  :init (setq shell-pop-full-span t))
+
 (defun emacsc/resize-shell-to-desired-width ()
   (when (and (string= (buffer-name) shell-pop-last-shell-buffer-name)
 	     (memq shell-pop-window-position '(left right)))
