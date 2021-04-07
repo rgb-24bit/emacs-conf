@@ -2,7 +2,8 @@
 
 ;;; Code:
 
-(defvar emacsc-enable-lsp t)
+(defvar emacsc-enable-lsp nil
+  "Whether to use lsp, default is `nil'.Can be set by buffer local or dired local.")
 
 (use-package nox
   :commands (nox-ensure)
@@ -14,9 +15,8 @@
       (nox-ensure))
 
     (dolist (hook (list
-		   'rust-mode-hook
-		   'go-mode-hook
-       ))
+                   'rust-mode-hook
+                   'go-mode-hook))
       (add-hook hook 'emacsc//setup-lsp)))
   :config
   (progn

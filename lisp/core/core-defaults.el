@@ -37,8 +37,11 @@
 (setq w32-ignore-modifiers-on-IME-input nil)
 
 ;; explicitly set the preferred coding systems to avoid annoying prompt
-  ;; from emacs (especially on Microsoft Windows)
+;; from emacs (especially on Microsoft Windows)
 (prefer-coding-system 'utf-8)
+
+;; auto revert
+(global-auto-revert-mode)
 
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
