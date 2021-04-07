@@ -90,12 +90,11 @@
   )
 
 ;; =============================================================================
-;; display time
+;; init page-break-lines
 ;; =============================================================================
 
-;; (display-time-mode -1)
-
-;; (setq display-time-24hr-format t)
+(use-package page-break-lines
+  :config (global-page-break-lines-mode))
 
 ;; =============================================================================
 ;; init dashboard
