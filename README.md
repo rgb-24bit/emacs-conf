@@ -28,3 +28,10 @@ $ git config --system core.longpaths true
 ```
 $ git submodule foreach 'git checkout -f'
 ```
+
+### Reference configuration
+
++ [purcell/emacs.d](https://github.com/purcell/emacs.d)
++ [syl20bnr/spacemacs](https://github.com/syl20bnr/spacemacs)
++ [hlissner/doom-emacs](https://github.com/hlissner/doom-emacs)
++ [manateelazycat/lazycat-emacs](https://github.com/manateelazycat/lazycat-emacs)
