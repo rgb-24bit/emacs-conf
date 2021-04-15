@@ -105,3 +105,6 @@
 [submodule "site-lisp/restclient"]
 	path = site-lisp/restclient
 	url = https://github.com/pashky/restclient.el.git
+[submodule "site-lisp/color-theme-sanityinc-tomorrow"]
+	path = site-lisp/color-theme-sanityinc-tomorrow
+	url = https://github.com/purcell/color-theme-sanityinc-tomorrow.git
