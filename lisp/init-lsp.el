@@ -20,9 +20,12 @@
       (add-hook hook 'emacsc//setup-lsp)))
   :config
   (progn
+    (require 'posframe)
+
     (general-def nox-mode-map
       "S-<f6>" 'nox-rename
-      "C-M-l"  'nox-format)))
+      "C-M-l"  'nox-format
+      "C-h ."  'nox-show-doc)))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
