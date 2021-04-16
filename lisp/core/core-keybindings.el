@@ -53,6 +53,9 @@
   "f e R" 'emacsc/load-init-file
   "f e c" 'emacsc/recompile-site-lisp-packages
 
+  "f v"     '(:ignore t :which-key "variables")
+  "f v d"   'add-dir-local-variable
+
   ;; funcs
   "TAB"   'emacsc/alternate-buffer
 
@@ -64,9 +67,6 @@
 
   "T"     '(:ignore t :which-key "UI/Themes")
   "T F"   'emacsc/toggle-frame-fullscreen
-
-  "v"     '(:ignore t :which-key "variables")
-  "v d"   'add-dir-local-variable
   )
 
 ;; =============================================================================

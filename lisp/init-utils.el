@@ -309,5 +309,13 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
     "e k c" 'thing-cut-comment
     "e k f" 'thing-cut-filename))
 
+;; =============================================================================
+;; compilation
+;; =============================================================================
+
+(with-eval-after-load 'compile
+  (add-hook 'compilation-finish-functions 'switch-to-buffer-other-window 'compilation))
+
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

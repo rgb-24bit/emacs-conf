@@ -49,7 +49,9 @@
 
   (emacsc-leader-def
     "s"   '(:ignore t :which-key "search")
-    "s p" 'counsel-rg))
+    "s p" 'counsel-rg
+
+    "T l" 'counsel-load-theme))
 
 (add-hook 'after-init-hook 'counsel-mode)
 
