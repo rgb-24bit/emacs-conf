@@ -69,6 +69,10 @@
   "T F"   'emacsc/toggle-frame-fullscreen
   )
 
+(general-def
+  "C-c C-n" 'emacsc/jump-next-func
+  "C-c C-p" 'emacsc/jump-prev-func)
+
 ;; =============================================================================
 ;; macos key modifier
 ;; =============================================================================

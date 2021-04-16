@@ -114,5 +114,15 @@ See also `toggle-frame-maximized'."
 	    (message "File deleted: '%s'" filename))
 	(message "Canceled: File deletion")))))
 
+(defun emacsc/jump-prev-func (&optional arg)
+  "jump to previous function by `beginning-of-defun'."
+  (interactive "^p")
+  (beginning-of-defun arg))
+
+(defun emacsc/jump-next-func (&optional arg)
+  "jump to previous function by `beginning-of-defun'."
+  (interactive "^p")
+  (beginning-of-defun (* -1 arg)))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here
