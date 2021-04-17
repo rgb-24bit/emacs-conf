@@ -85,7 +85,6 @@
 (require 'init-ivy)
 (require 'init-company)
 (require 'init-ledger)
-(require 'init-eaf)
 (require 'init-lsp)
 (require 'init-rust)
 (require 'init-md)
@@ -95,6 +94,9 @@
 (when emacsc-system-is-mac
   (require 'init-vterm)
   (require 'init-vc))
+
+(when (not emacsc-system-is-mac)
+  (require 'init-eaf))
 
 (when (file-exists-p custom-file)
   (load custom-file))
