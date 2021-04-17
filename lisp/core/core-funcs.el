@@ -1,4 +1,4 @@
-;;; core-funcs.el<lisp> --- core funcs -*- lexical-binding: t; -*-
+;;; core-funcs.el --- core funcs -*- lexical-binding: t; -*-
 
 ;;; Code:
 
@@ -130,4 +130,4 @@ See also `toggle-frame-maximized'."
   (run-hooks (intern (format "%S-local-vars-hook" major-mode))))
 
 (provide 'core-funcs)
-;;; core-funcs.el<lisp> ends here
+;;; core-funcs.el ends here
