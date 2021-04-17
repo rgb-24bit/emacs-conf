@@ -12,8 +12,7 @@
   :config
   (progn
     (auto-save-enable)
-    (setq auto-save-silent t)
-    (setq auto-save-delete-trailing-whitespace t)))
+    (setq auto-save-silent t)))
 
 ;; =============================================================================
 ;; ibuffer
