@@ -12,6 +12,11 @@ $ git pull
 $ git submodule update --init --recursive --depth 1
 ```
 
+Sync when submodule updated:
+```
+$ git submodule update --init
+```
+
 Dependencies:
 + [ripgrep](https://github.com/BurntSushi/ripgrep)
 + [eaf](https://github.com/manateelazycat/emacs-application-framework)

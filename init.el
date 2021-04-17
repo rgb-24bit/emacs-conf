@@ -90,10 +90,10 @@
 (require 'init-md)
 (require 'init-lang)
 (require 'init-go)
+(require 'init-vc)
 
 (when emacsc-system-is-mac
-  (require 'init-vterm)
-  (require 'init-vc))
+  (require 'init-vterm))
 
 (when (not emacsc-system-is-mac)
   (require 'init-eaf))

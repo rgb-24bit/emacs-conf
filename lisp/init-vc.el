@@ -14,6 +14,9 @@
     (when-let ((git (executable-find "git")))
       (setq magit-git-executable git))
 
+    (when emacsc-system-is-windows
+      (setq magit-commit-show-diff nil))
+
     ;; https://emacs.stackexchange.com/questions/32696/how-to-use-magit-list-repositories
     (setq magit-repolist-columns
 	  '(("S"        1 magit-repolist-column-flag                   ())
