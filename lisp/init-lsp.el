@@ -2,8 +2,8 @@
 
 ;;; Code:
 
-(defcustom emacsc-enable-lsp nil
-  "Whether to use lsp, default is `nil'.Can be set by buffer local or dired local.")
+(defvar-local emacsc-enable-lsp nil
+  "Whether to use lsp, default is `nil'. Can be set by buffer local or dired local.")
 
 (use-package nox
   :commands (nox-ensure)
@@ -11,16 +11,12 @@
   (progn
     (defun emacsc//setup-lsp ()
       "setup the lsp support, when `emacsc-enable-lsp' is t."
-      ;; https://stackoverflow.com/questions/5147060/how-can-i-access-directory-local-variables-in-my-major-mode-hooks
-      ;; access directory-local variables in major mode hooks
-      (add-hook 'hack-local-variables-hook
-                (lambda ()
-                  (when emacsc-enable-lsp
-                    (nox-ensure)))))
+      (when emacsc-enable-lsp
+        (nox-ensure)))
 
     (dolist (hook (list
-                   'rust-mode-hook
-                   'go-mode-hook))
+                   'rust-mode-local-vars-hook
+                   'go-mode-local-vars-hook))
       (add-hook hook 'emacsc//setup-lsp)))
   :config
   (progn

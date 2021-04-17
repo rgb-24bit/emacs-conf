@@ -124,5 +124,10 @@ See also `toggle-frame-maximized'."
   (interactive "^p")
   (beginning-of-defun (* -1 arg)))
 
+;; https://github.com/syl20bnr/spacemacs/blob/develop/layers/+spacemacs/spacemacs-defaults/funcs.el#L26
+(defun emacsc//run-local-vars-mode-hook ()
+  "Run a hook for the major-mode after the local variables have been processed."
+  (run-hooks (intern (format "%S-local-vars-hook" major-mode))))
+
 (provide 'core-funcs)
 ;;; core-funcs.el<lisp> ends here

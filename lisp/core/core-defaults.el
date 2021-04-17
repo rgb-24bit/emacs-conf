@@ -43,5 +43,9 @@
 ;; auto revert
 (global-auto-revert-mode)
 
+;; hook into `hack-local-variables' in order to allow switching spacemacs
+;; configurations based on local variables
+(add-hook 'hack-local-variables-hook #'emacsc//run-local-vars-mode-hook)
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
