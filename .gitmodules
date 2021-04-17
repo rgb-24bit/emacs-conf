@@ -35,9 +35,6 @@
 	path = site-lisp/avy
 	url = https://github.com/abo-abo/avy.git
 	ignore = dirty
-[submodule "site-lisp/s"]
-	path = site-lisp/s
-	url = https://github.com/magnars/s.el.git
 [submodule "site-lisp/ledger-mode"]
 	path = site-lisp/ledger-mode
 	url = https://github.com/ledger/ledger-mode.git
