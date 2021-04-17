@@ -11,8 +11,12 @@
   (progn
     (defun emacsc//setup-lsp ()
       "setup the lsp support, when `emacsc-enable-lsp' is t."
-      (when emacsc-enable-lsp
-        (nox-ensure)))
+      ;; https://stackoverflow.com/questions/5147060/how-can-i-access-directory-local-variables-in-my-major-mode-hooks
+      ;; access directory-local variables in major mode hooks
+      (add-hook 'hack-local-variables-hook
+                (lambda ()
+                  (when emacsc-enable-lsp
+                    (nox-ensure)))))
 
     (dolist (hook (list
                    'rust-mode-hook
