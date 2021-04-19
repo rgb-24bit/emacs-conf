@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package ledger-mode
+(use-package-straight ledger-mode
   :mode ("\\.\\(ledger\\|ldg\\)\\'" . ledger-mode)
   :defer t
   :init

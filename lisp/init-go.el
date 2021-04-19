@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package go-mode
+(use-package-straight go-mode
   :mode "\\.go\\'"
   :config
   (emacsc-leader-def go-mode-map

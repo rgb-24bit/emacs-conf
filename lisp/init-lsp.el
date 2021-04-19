@@ -5,6 +5,9 @@
 (defvar-local emacsc-enable-lsp nil
   "Whether to use lsp, default is `nil'. Can be set by buffer local or dired local.")
 
+(use-package-straight posframe
+  :defer t)
+
 (use-package nox
   :commands (nox-ensure)
   :init

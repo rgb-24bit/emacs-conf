@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package markdown-mode
+(use-package-straight markdown-mode
   :mode "\\.md\\'")
 
 (provide 'init-md)

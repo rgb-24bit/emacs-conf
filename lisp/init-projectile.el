@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package projectile
+(use-package-straight projectile
   :commands (projectile-ack
 	     projectile-ag
 	     projectile-compile-project

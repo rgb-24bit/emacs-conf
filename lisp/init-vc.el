@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package magit
+(use-package-straight magit
   :commands (magit-status magit-list-repositories)
   :init
   (emacsc-leader-def

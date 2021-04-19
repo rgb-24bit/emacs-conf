@@ -76,7 +76,7 @@
 ;; avy
 ;; =============================================================================
 
-(use-package avy
+(use-package-straight avy
   :bind ("C-:" . avy-goto-char-in-line))
 
 ;; =============================================================================
@@ -118,7 +118,7 @@
 ;; clean-aindent-mode
 ;; =============================================================================
 
-(use-package clean-aindent-mode
+(use-package-straight clean-aindent-mode
   :config
   (progn
     (clean-aindent-mode)
@@ -137,7 +137,7 @@ operations after each indent operations have been done."
 ;; expan-region
 ;; =============================================================================
 
-(use-package expand-region
+(use-package-straight expand-region
   :bind (("C-M-." . er/expand-region)
          ("C-M->" . er/contract-region)))
 
@@ -177,7 +177,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 ;; rainbow delimiters
 ;; =============================================================================
 
-(use-package rainbow-delimiters
+(use-package-straight rainbow-delimiters
   :commands rainbow-delimiters-mode
   :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -268,7 +268,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 ;; restclient
 ;; =============================================================================
 
-(use-package restclient
+(use-package-straight restclient
   :mode ("\\.http\\'" . restclient-mode))
 
 ;; =============================================================================
@@ -314,7 +314,6 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 
 (with-eval-after-load 'compile
   (add-hook 'compilation-finish-functions 'switch-to-buffer-other-window 'compilation))
-
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

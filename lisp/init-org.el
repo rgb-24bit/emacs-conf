@@ -101,7 +101,7 @@
     (setq toc-org-max-depth 10)
     (add-hook 'org-mode-hook 'toc-org-enable)))
 
-(use-package htmlize
+(use-package-straight htmlize
   :defer t)
 
 (provide 'init-org)

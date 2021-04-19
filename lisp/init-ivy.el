@@ -6,8 +6,8 @@
 ;; ivy
 ;; =============================================================================
 
-(require 'smex)
-(require 'ivy)
+(use-package-straight smex)
+(use-package-straight ivy)
 
 (with-eval-after-load 'ivy
   (setq-default ivy-use-virtual-buffers t

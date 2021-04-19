@@ -5,13 +5,13 @@
 (use-package eaf
   :defer t
   :commands (eaf-open-browser
-	     eaf-open-browser-with-history
-	     eaf-open)
+             eaf-open-browser-with-history
+             eaf-open)
   :init
-  (use-package epc :defer t)
-  (use-package ctable :defer t)
-  (use-package deferred :defer t)
-  (use-package s :defer t)
+  (use-package-straight epc :defer t)
+  (use-package-straight ctable :defer t)
+  (use-package-straight deferred :defer t)
+  (use-package-straight s :defer t)
   :custom
   (eaf-browser-continue-where-left-off t)
   :config

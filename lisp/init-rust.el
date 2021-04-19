@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package rust-mode
+(use-package-straight rust-mode
   :mode "\\.rs\\'"
   :config
   ;; keep global `C-c C-n' binding

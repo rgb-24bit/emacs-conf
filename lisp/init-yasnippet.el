@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package yasnippet
+(use-package-straight yasnippet
   :commands (yas-global-mode yas-minor-mode yas-activate-extra-mode)
   :init
   (progn

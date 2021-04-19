@@ -4,7 +4,7 @@
 
 (defvar emacsc-shell-default-width 30)
 
-(use-package vterm
+(use-package-straight vterm
   :defer t
   :commands (vterm vterm-other-window)
   :init (emacsc-leader-def "'" 'vterm-other-window)

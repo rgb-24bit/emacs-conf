@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(use-package company
+(use-package-straight company
   :commands global-company-mode
   :init
   (progn
