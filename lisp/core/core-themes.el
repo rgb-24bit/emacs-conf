@@ -39,26 +39,22 @@
 ;; init modeline
 ;; =============================================================================
 
-;; (use-package winum
-;;   :init
-;;   (setq winum-keymap
-;; 	(let ((map (make-sparse-keymap)))
-;; 	  (define-key map (kbd "C-`") 'winum-select-window-by-number)
-;; 	  (define-key map (kbd "C-²") 'winum-select-window-by-number)
-;; 	  (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
-;; 	  (define-key map (kbd "M-1") 'winum-select-window-1)
-;; 	  (define-key map (kbd "M-2") 'winum-select-window-2)
-;; 	  (define-key map (kbd "M-3") 'winum-select-window-3)
-;; 	  (define-key map (kbd "M-4") 'winum-select-window-4)
-;; 	  (define-key map (kbd "M-5") 'winum-select-window-5)
-;; 	  (define-key map (kbd "M-6") 'winum-select-window-6)
-;; 	  (define-key map (kbd "M-7") 'winum-select-window-7)
-;; 	  (define-key map (kbd "M-8") 'winum-select-window-8)
-;; 	  map))
-;;   :hook (after-init . winum-mode))
-
-(use-package window-numbering
-  :hook (after-init . window-numbering-mode))
+(use-package-straight winum
+  :init
+  (setq winum-keymap
+        (let ((map (make-sparse-keymap)))
+          (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+          (define-key map (kbd "M-1") 'winum-select-window-1)
+          (define-key map (kbd "M-2") 'winum-select-window-2)
+          (define-key map (kbd "M-3") 'winum-select-window-3)
+          (define-key map (kbd "M-4") 'winum-select-window-4)
+          (define-key map (kbd "M-5") 'winum-select-window-5)
+          (define-key map (kbd "M-6") 'winum-select-window-6)
+          (define-key map (kbd "M-7") 'winum-select-window-7)
+          (define-key map (kbd "M-8") 'winum-select-window-8)
+          map)
+        winum-auto-setup-mode-line nil)
+  :hook (after-init . winum-mode))
 
 (defun emacsc/compute-mode-line-height (scale)
   "Return an adjusted mode-line height."
@@ -106,11 +102,11 @@
   (progn
     (dashboard-setup-startup-hook)
     (setq dashboard-banner-logo-title "Welcome to rgb-24bit's Emacs"
-	  dashboard-startup-banner "~/.emacs.d/banners/bannber.png"
-	  dashboard-center-content t
-	  dashboard-show-shortcuts nil
-	  dashboard-items '((recents  . 5)
-			    (projects . 5)))))
+          dashboard-startup-banner "~/.emacs.d/banners/bannber.png"
+          dashboard-center-content t
+          dashboard-show-shortcuts nil
+          dashboard-items '((recents  . 5)
+                            (projects . 5)))))
 
 ;; =============================================================================
 ;; display line number

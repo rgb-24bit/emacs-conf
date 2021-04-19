@@ -367,9 +367,9 @@
   (maple-xpm-draw 'cursor face nil nil nil 'bar))
 
 (maple-modeline-define window-number
-  :if (bound-and-true-p window-numbering-mode)
+  :if (bound-and-true-p winum-mode)
   :format
-  (maple-modeline--unicode-number (window-numbering-get-number)))
+  (maple-modeline--unicode-number (winum-get-number)))
 
 (maple-modeline-define major-mode
   :format
