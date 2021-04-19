@@ -63,5 +63,11 @@
 
 (require 'use-package)
 
+(defmacro use-package-straight (name &rest args)
+  "A simple `use-package' wrapper, auto add (:straight t) argument.
+Because the `straight-use-package' is no highlight."
+  (declare (indent 1))
+  `(use-package ,name ,@(plist-put args :straight t)))
+
 (provide 'core-packages)
 ;;; core-packages.el ends here
