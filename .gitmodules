@@ -4,104 +4,18 @@
 [submodule "site-lisp/color-theme-sanityinc-solarized"]
 	path = site-lisp/color-theme-sanityinc-solarized
 	url = https://github.com/rgb-24bit/color-theme-sanityinc-solarized.git
-[submodule "site-lisp/emacs-winum"]
-	path = site-lisp/winum
-	url = https://github.com/deb0ch/emacs-winum.git
-[submodule "site-lisp/dash.el"]
-	path = site-lisp/dash
-	url = https://github.com/magnars/dash.el.git
-[submodule "site-lisp/emacs-dashboard"]
-	path = site-lisp/dashboard
-	url = https://github.com/emacs-dashboard/emacs-dashboard.git
-[submodule "site-lisp/page-break-lines"]
-	path = site-lisp/page-break-lines
-	url = https://github.com/purcell/page-break-lines.git
-[submodule "site-lisp/projectile"]
-	path = site-lisp/projectile
-	url = https://github.com/bbatsov/projectile.git
-[submodule "site-lisp/emacs-htmlize"]
-	path = site-lisp/emacs-htmlize
-	url = https://github.com/hniksic/emacs-htmlize.git
-[submodule "site-lisp/yasnippet"]
-	path = site-lisp/yasnippet
-	url = https://github.com/joaotavora/yasnippet.git
-[submodule "site-lisp/swiper"]
-	path = site-lisp/swiper
-	url = https://github.com/abo-abo/swiper.git
-[submodule "site-lisp/company-mode"]
-	path = site-lisp/company-mode
-	url = https://github.com/company-mode/company-mode.git
-[submodule "site-lisp/avy"]
-	path = site-lisp/avy
-	url = https://github.com/abo-abo/avy.git
-	ignore = dirty
-[submodule "site-lisp/ledger-mode"]
-	path = site-lisp/ledger-mode
-	url = https://github.com/ledger/ledger-mode.git
-[submodule "site-lisp/powerline"]
-	path = site-lisp/powerline
-	url = https://github.com/milkypostman/powerline.git
-[submodule "site-lisp/window-numbering.el"]
-	path = site-lisp/window-numbering
-	url = https://github.com/nschum/window-numbering.el.git
 [submodule "site-lisp/emacs-application-framework"]
 	path = site-lisp/emacs-application-framework
 	url = https://gitee.com/rgbit-emacs-package-mirror/emacs-application-framework.git
-	ignore = dirty
-[submodule "site-lisp/rust-mode"]
-	path = site-lisp/rust-mode
-	url = https://github.com/rust-lang/rust-mode.git
-[submodule "site-lisp/smex"]
-	path = site-lisp/smex
-	url = https://github.com/nonsequitur/smex.git
-	ignore = dirty
-[submodule "site-lisp/clean-aindent-mode"]
-	path = site-lisp/clean-aindent-mode
-	url = https://github.com/pmarinov/clean-aindent-mode.git
-	ignore = dirty
-[submodule "site-lisp/emacs-libvterm"]
-	path = site-lisp/emacs-libvterm
-	url = https://github.com/akermu/emacs-libvterm.git
-	ignore = dirty
-[submodule "site-lisp/magit"]
-	path = site-lisp/magit
-	url = https://github.com/magit/magit.git
-[submodule "site-lisp/transient"]
-	path = site-lisp/transient
-	url = https://github.com/magit/transient.git
-[submodule "site-lisp/with-editor"]
-	path = site-lisp/with-editor
-	url = https://github.com/magit/with-editor.git
-[submodule "site-lisp/posframe"]
-	path = site-lisp/posframe
-	url = https://github.com/tumashu/posframe.git
 	ignore = dirty
 [submodule "site-lisp/nox"]
 	path = site-lisp/nox
 	url = https://github.com/manateelazycat/nox.git
 	ignore = dirty
-[submodule "site-lisp/markdown-mode"]
-	path = site-lisp/markdown-mode
-	url = https://github.com/jrblevin/markdown-mode.git
-[submodule "site-lisp/expand-region.el"]
-	path = site-lisp/expand-region
-	url = https://github.com/magnars/expand-region.el.git
-[submodule "site-lisp/rainbow-delimiters"]
-	path = site-lisp/rainbow-delimiters
-	url = https://github.com/Fanael/rainbow-delimiters.git
-[submodule "site-lisp/exec-path-from-shell"]
-	path = site-lisp/exec-path-from-shell
-	url = https://github.com/purcell/exec-path-from-shell.git
-[submodule "site-lisp/go-mode"]
-	path = site-lisp/go-mode
-	url = https://github.com/dominikh/go-mode.el.git
 [submodule "site-lisp/awesome-pair"]
 	path = site-lisp/awesome-pair
 	url = https://github.com/manateelazycat/awesome-pair.git
 	ignore = dirty
-[submodule "site-lisp/restclient"]
-	path = site-lisp/restclient
-	url = https://github.com/pashky/restclient.el.git
 [submodule "site-lisp/color-theme-sanityinc-tomorrow"]
 	path = site-lisp/color-theme-sanityinc-tomorrow
 	url = https://github.com/purcell/color-theme-sanityinc-tomorrow.git

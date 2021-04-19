@@ -31,7 +31,7 @@
 ;; counsel
 ;; =============================================================================
 
-(require 'counsel)
+(use-package-straight counsel)
 
 (setq-default counsel-mode-override-describe-bindings t)
 
@@ -59,7 +59,7 @@
 ;; swiper
 ;; =============================================================================
 
-(require 'swiper)
+(use-package-straight swiper)
 
 (global-set-key "\C-s" 'swiper)
 

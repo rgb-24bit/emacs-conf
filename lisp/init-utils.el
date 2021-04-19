@@ -83,7 +83,7 @@
 ;; code folding
 ;; =============================================================================
 
-(require 'origami)
+(use-package-straight origami)
 
 (add-hook 'prog-mode-hook 'origami-mode)
 
