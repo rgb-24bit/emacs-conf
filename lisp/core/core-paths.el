@@ -6,7 +6,7 @@
 (defconst emacsc-bin-directory (expand-file-name "bin" user-emacs-directory))
 
 (when (memq window-system '(mac ns x))
-  (require 'exec-path-from-shell)
+  (use-package-straight exec-path-from-shell)
   (exec-path-from-shell-initialize))
 
 (provide 'core-paths)

@@ -2,33 +2,34 @@
 
 ;;; Code:
 
-(require 'general)
+(use-package-straight general
+  :config
+  ;; To automatically prevent Key sequence starts with a non-prefix key errors
+  (general-auto-unbind-keys))
 
-;; To automatically prevent Key sequence starts with a non-prefix key errors
-(general-auto-unbind-keys)
 
 ;; =============================================================================
 ;; which-key
 ;; =============================================================================
 
-(require 'which-key)
+(use-package-straight which-key
+  :config
+  (setq which-key-add-column-padding 1
+        which-key-allow-multiple-replacements t
+        which-key-echo-keystrokes 0.02
+        which-key-idle-delay 0.4
+        which-key-idle-secondary-delay 0.01
+        which-key-max-description-length 32
+        which-key-max-display-columns nil
+        which-key-min-display-lines 2
+        which-key-prevent-C-h-from-cycling t
+        which-key-sort-order 'which-key-prefix-then-key-order
+        which-key-sort-uppercase-first nil
+        which-key-special-keys nil
+        which-key-use-C-h-for-paging t
+        which-key-allow-evil-operators t)
 
-(setq which-key-add-column-padding 1
-      which-key-allow-multiple-replacements t
-      which-key-echo-keystrokes 0.02
-      which-key-idle-delay 0.4
-      which-key-idle-secondary-delay 0.01
-      which-key-max-description-length 32
-      which-key-max-display-columns nil
-      which-key-min-display-lines 2
-      which-key-prevent-C-h-from-cycling t
-      which-key-sort-order 'which-key-prefix-then-key-order
-      which-key-sort-uppercase-first nil
-      which-key-special-keys nil
-      which-key-use-C-h-for-paging t
-      which-key-allow-evil-operators t)
-
-(which-key-mode)
+  (which-key-mode))
 
 ;; =============================================================================
 ;; leader key
@@ -79,12 +80,12 @@
 
 (when emacsc-system-is-mac
   (setq mac-command-modifier       'meta
-	mac-option-modifier        'meta
-	mac-function-modifier      'control
-	mac-control-modifier       'control
-	mac-right-command-modifier 'left
-	mac-right-option-modifier  'left
-	mac-right-control-modifier 'left))
+        mac-option-modifier        'meta
+        mac-function-modifier      'control
+        mac-control-modifier       'control
+        mac-right-command-modifier 'left
+        mac-right-option-modifier  'left
+        mac-right-control-modifier 'left))
 
 (provide 'core-keybindings)
 ;;; core-keybindings.el ends here

@@ -60,7 +60,7 @@
   "Return an adjusted mode-line height."
   (truncate (* scale (frame-char-height))))
 
-(use-package powerline
+(use-package-straight powerline
   :defer t
   :init
   (setq-default powerline-height (emacsc/compute-mode-line-height emacsc-powerline-scale)))
@@ -90,14 +90,14 @@
 ;; init page-break-lines
 ;; =============================================================================
 
-(use-package page-break-lines
+(use-package-straight page-break-lines
   :config (global-page-break-lines-mode))
 
 ;; =============================================================================
 ;; init dashboard
 ;; =============================================================================
 
-(use-package dashboard
+(use-package-straight dashboard
   :config
   (progn
     (dashboard-setup-startup-hook)
