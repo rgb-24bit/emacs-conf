@@ -39,6 +39,11 @@ $ git config --system core.longpaths true
 $ git submodule foreach 'git checkout -f'
 ```
 
+3. `straight-freeze-versions` with error `*Caches are still outdated; something is seriously wrong*`
+
+I use require to load the configuration file, which makes the straight related functions not re-executed when the init file is reloaded.
+You can restart emacs to execute `straight-freeze-versions`. [raxod502/straight.el#437](https://github.com/raxod502/straight.el/issues/437)
+
 ### Reference configuration
 
 + [purcell/emacs.d](https://github.com/purcell/emacs.d)
