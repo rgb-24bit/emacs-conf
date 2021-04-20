@@ -12,10 +12,6 @@
 	path = site-lisp/nox
 	url = https://github.com/manateelazycat/nox.git
 	ignore = dirty
-[submodule "site-lisp/awesome-pair"]
-	path = site-lisp/awesome-pair
-	url = https://github.com/manateelazycat/awesome-pair.git
-	ignore = dirty
 [submodule "site-lisp/color-theme-sanityinc-tomorrow"]
 	path = site-lisp/color-theme-sanityinc-tomorrow
 	url = https://github.com/purcell/color-theme-sanityinc-tomorrow.git
