@@ -17,6 +17,7 @@ elpa-*
 # straight
 straight/*
 !straight/versions
+!straight/recipes
 
 # emacs
 custom.el

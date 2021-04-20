@@ -57,6 +57,29 @@
 
 (require 'straight-bootstrap)
 
+(defconst emacsc-recipes-directory (expand-file-name "straight/recipes" user-emacs-directory)
+  "Emacs config recipes directory.")
+
+(defun straight-recipes-emacsc-retrieve (package)
+  "Look up a PACKAGE recipe in emacsc-recipes."
+  (with-temp-buffer
+    (condition-case nil
+        (progn
+          (insert-file-contents-literally
+           (expand-file-name (symbol-name package) emacsc-recipes-directory))
+          (read (current-buffer)))
+      (error nil))))
+
+(defun straight-recipes-emacsc-list ()
+  "Return a list of recipes available in EMACSC, as a list of strings."
+  (straight--directory-files emacsc-recipes-directory "^[^.]"))
+
+(defun straight-recipes-emacsc-version ()
+  "Return the current version of the EMACSC retriever."
+  1)
+
+(straight-use-recipes '(emacsc :type built-in :build nil))
+
 ;; =============================================================================
 ;; init use-package
 ;; =============================================================================

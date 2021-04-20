@@ -185,7 +185,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 ;; awesome pair
 ;; =============================================================================
 
-(use-package awesome-pair
+(use-package-straight awesome-pair
   :commands awesome-pair-mode
   :init
   (dolist (hook (list

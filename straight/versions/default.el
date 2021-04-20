@@ -1,4 +1,5 @@
 (("avy" . "e92cb37457b43336b765630dbfbea8ba4be601fa")
+ ("awesome-pair" . "dfc47a5640fa2f5ddd677c376ff70ab58a2e566e")
  ("clean-aindent-mode" . "a97bcae8f43a9ff64e95473e4ef0d8bafe829211")
  ("company-mode" . "4286972775832e29434becc6c72e767319139a1c")
  ("dash.el" . "b9286a84975874b10493f1cb4ea051c501f51273")
