@@ -41,6 +41,7 @@
   :config
   (setq lsp-enable-symbol-highlighting nil
         lsp-lens-enable nil
+        lsp-completion-provider :none
         lsp-modeline-code-actions-enable nil)
   (general-def lsp-mode-map
     "S-<f6>" 'lsp-rename
@@ -52,7 +53,10 @@
 (use-package-straight lsp-ui
   :commands lsp-ui-mode
   :config
-  (setq lsp-ui-sideline-enable nil))
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-delay 2)
+  (general-def lsp-ui-mode-map
+    "C-x ." 'lsp-ui-doc-focus-frame))
 
 ;; =============================================================================
 ;; flycheck
@@ -61,6 +65,7 @@
 (use-package-straight flycheck
   :defer t
   :config
+  (setq flycheck-idle-change-delay 2)
   (general-def flycheck-mode-map
     "<f2>" 'flycheck-next-error))
 

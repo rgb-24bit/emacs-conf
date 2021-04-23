@@ -112,6 +112,12 @@
 
 (require 'undo-tree)
 
+(setq undo-tree-visualizer-timestamps t
+      undo-tree-visualizer-diff t
+      undo-limit 800000
+      undo-strong-limit 12000000
+      undo-outer-limit 120000000)
+
 (add-hook 'after-init-hook 'global-undo-tree-mode)
 
 ;; =============================================================================

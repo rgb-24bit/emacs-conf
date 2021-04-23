@@ -42,7 +42,7 @@
   ;; I prefer the default behaviour or cycling in place, or
   ;; explicit use of browse-kill-ring
   (define-key counsel-mode-map [remap yank-pop] nil)
-
+  (define-key counsel-mode-map (kbd "C-<f12>") 'counsel-imenu)
   ;; keybindings
   (global-set-key (kbd "C-x C-r") 'counsel-recentf)
   (global-set-key (kbd "M-y") 'counsel-yank-pop)
