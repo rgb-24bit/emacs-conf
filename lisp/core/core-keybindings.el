@@ -69,6 +69,9 @@
 
   "T"     '(:ignore t :which-key "UI/Themes")
   "T F"   'emacsc/toggle-frame-fullscreen
+
+  "a"     '(:ignore t :which-key "applications")
+  "a p"   'list-processes
   )
 
 (general-def
