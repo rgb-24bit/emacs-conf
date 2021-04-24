@@ -7,7 +7,8 @@
   :defer t
   :init
   (progn
-    (setq ledger-post-amount-alignment-column 62)
+    (setq ledger-post-amount-alignment-column 62
+          ledger-add-transaction-prompt-for-text nil)
 
     (add-hook 'ledger-mode-hook
               (lambda () (setq-local pcomplete-termination-string "")))
