@@ -91,6 +91,7 @@
 (require 'init-lang)
 (require 'init-go)
 (require 'init-vc)
+(require 'init-treemacs)
 
 (when emacsc-system-is-mac
   (require 'init-vterm))

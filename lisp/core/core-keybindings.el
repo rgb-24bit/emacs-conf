@@ -47,7 +47,8 @@
   ;; open & load config file
   "f"     '(:ignore t :which-key "files")
   "f D"   'emacsc/delete-current-buffer-file
-
+  "f C"   'emacsc/copy-file
+  
   "f e"   '(:ignore t :which-key "emacs")
   "f e d" 'emacsc/open-init-file
   "f e p" 'emacsc/open-environ-config
@@ -72,7 +73,8 @@
 
 (general-def
   "C-c C-n" 'emacsc/jump-next-func
-  "C-c C-p" 'emacsc/jump-prev-func)
+  "C-c C-p" 'emacsc/jump-prev-func
+  "C-c C-d" 'emacsc/duplicate-line-or-region)
 
 ;; =============================================================================
 ;; macos key modifier
