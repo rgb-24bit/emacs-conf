@@ -87,6 +87,7 @@
 (require 'init-ledger)
 (require 'init-lsp)
 (require 'init-rust)
+(require 'init-python)
 (require 'init-md)
 (require 'init-major-mode)
 (require 'init-go)

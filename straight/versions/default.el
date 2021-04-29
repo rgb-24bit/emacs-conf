@@ -39,6 +39,7 @@
  ("posframe" . "5cc13723139181ba77694080fc772c645b200135")
  ("powerline" . "cfff1cfe63793ea1a8bcfcae50c296558384cf08")
  ("projectile" . "513228f473910128efcad13f46dfc22a74976675")
+ ("pyvenv" . "9b3678bc29192d2dba64df90fbdb17393ef8d877")
  ("rainbow-delimiters" . "f43d48a24602be3ec899345a3326ed0247b960c6")
  ("restclient.el" . "abc307b965bf6720bc466281f2e204cd5ce37dc3")
  ("rust-mode" . "e9e9e32c4f82a9b895543c120b327ab5536ec42b")
