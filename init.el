@@ -88,7 +88,7 @@
 (require 'init-lsp)
 (require 'init-rust)
 (require 'init-md)
-(require 'init-lang)
+(require 'init-major-mode)
 (require 'init-go)
 (require 'init-vc)
 (require 'init-treemacs)
