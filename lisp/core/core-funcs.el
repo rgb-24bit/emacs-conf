@@ -41,10 +41,10 @@ current window."
   (interactive)
   (cl-destructuring-bind (buf start pos)
       (cl-find (window-buffer window) (window-prev-buffers)
-	       :key #'car :test-not #'eq)
+               :key #'car :test-not #'eq)
     (list (other-buffer) nil nil)
     (if (not buf)
-	(message "Last buffer not found.")
+        (message "Last buffer not found.")
       (set-window-buffer-start-and-point window buf start pos))))
 
 (defun emacsc/indent-region-or-buffer ()
@@ -52,12 +52,12 @@ current window."
   (interactive)
   (save-excursion
     (if (region-active-p)
-	(progn
-	  (indent-region (region-beginning) (region-end))
-	  (message "Indented selected region."))
+        (progn
+          (indent-region (region-beginning) (region-end))
+          (message "Indented selected region."))
       (progn
-	(indent-region (point-min) (point-max))
-	(message "Indented buffer.")))
+        (indent-region (point-min) (point-max))
+        (message "Indented buffer.")))
     (whitespace-cleanup)))
 
 (defun emacsc/kill-this-buffer (&optional arg)
@@ -87,10 +87,10 @@ See also `toggle-frame-maximized'."
   (interactive)
   (let ((fullscreen (frame-parameter frame 'fullscreen)))
     (if (memq fullscreen '(fullscreen fullboth))
-	(let ((fullscreen-restore (frame-parameter frame 'fullscreen-restore)))
-	  (if (memq fullscreen-restore '(maximized fullheight fullwidth))
-	      (set-frame-parameter frame 'fullscreen fullscreen-restore)
-	    (set-frame-parameter frame 'fullscreen nil)))
+        (let ((fullscreen-restore (frame-parameter frame 'fullscreen-restore)))
+          (if (memq fullscreen-restore '(maximized fullheight fullwidth))
+              (set-frame-parameter frame 'fullscreen fullscreen-restore)
+            (set-frame-parameter frame 'fullscreen nil)))
       (modify-frame-parameters
        frame `((fullscreen . fullboth) (fullscreen-restore . ,fullscreen))))
     ;; Manipulating a frame without waiting for the fullscreen
@@ -102,17 +102,17 @@ See also `toggle-frame-maximized'."
   "Removes file connected to current buffer and kills buffer."
   (interactive)
   (let ((filename (buffer-file-name))
-	(buffer (current-buffer))
-	(name (buffer-name)))
+        (buffer (current-buffer))
+        (name (buffer-name)))
     (if (not (and filename (file-exists-p filename)))
-	(ido-kill-buffer)
+        (ido-kill-buffer)
       (if (yes-or-no-p
-	   (format "Are you sure you want to delete this file: '%s'?" name))
-	  (progn
-	    (delete-file filename t)
-	    (kill-buffer buffer)
-	    (message "File deleted: '%s'" filename))
-	(message "Canceled: File deletion")))))
+           (format "Are you sure you want to delete this file: '%s'?" name))
+          (progn
+            (delete-file filename t)
+            (kill-buffer buffer)
+            (message "File deleted: '%s'" filename))
+        (message "Canceled: File deletion")))))
 
 (defun emacsc/jump-prev-func (&optional arg)
   "jump to previous function by `beginning-of-defun'."
@@ -167,6 +167,45 @@ With negative N, comment out original line and use the absolute value."
             (comment-region (line-beginning-position) (line-end-position)))
         (forward-line 1)
         (forward-char pos)))))
+
+;; https://stackoverflow.com/questions/384284/how-do-i-rename-an-open-file-in-emacs
+(defun emacsc/rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive
+   (progn
+     (if (not (buffer-file-name))
+         (error "Buffer '%s' is not visiting a file!" (buffer-name)))
+     ;; Disable ido auto merge since it too frequently jumps back to the original
+     ;; file name if you pause while typing. Reenable with C-z C-z in the prompt.
+     (let ((ido-auto-merge-work-directories-length -1))
+       (list (read-file-name (format "Rename %s to: " (file-name-nondirectory
+                                                       (buffer-file-name))))))))
+  (if (equal new-name "")
+      (error "Aborted rename"))
+  (setq new-name (if (file-directory-p new-name)
+                     (expand-file-name (file-name-nondirectory
+                                        (buffer-file-name))
+                                       new-name)
+                   (expand-file-name new-name)))
+  ;; Only rename if the file was saved before. Update the
+  ;; buffer name and visited file in all cases.
+  (if (file-exists-p (buffer-file-name))
+      (rename-file (buffer-file-name) new-name 1))
+  (let ((was-modified (buffer-modified-p)))
+    ;; This also renames the buffer, and works with uniquify
+    (set-visited-file-name new-name)
+    (if was-modified
+        (save-buffer)
+      ;; Clear buffer-modified flag caused by set-visited-file-name
+      (set-buffer-modified-p nil)))
+
+  (when (fboundp 'recentf-add-file)
+    (recentf-add-file new-name)
+    (recentf-remove-if-non-kept filename))
+
+  (setq default-directory (file-name-directory new-name))
+
+  (message "Renamed to %s." new-name))
 
 (provide 'core-funcs)
 ;;; core-funcs.el ends here
