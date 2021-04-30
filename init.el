@@ -97,8 +97,8 @@
 (when emacsc-system-is-mac
   (require 'init-vterm))
 
-(when (not emacsc-system-is-mac)
-  (require 'init-eaf))
+;; (when (not emacsc-system-is-mac)
+;;   (require 'init-eaf))
 
 (when (file-exists-p custom-file)
   (load custom-file))

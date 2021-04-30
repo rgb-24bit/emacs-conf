@@ -4,10 +4,6 @@
 [submodule "site-lisp/color-theme-sanityinc-solarized"]
 	path = site-lisp/color-theme-sanityinc-solarized
 	url = https://github.com/rgb-24bit/color-theme-sanityinc-solarized.git
-[submodule "site-lisp/emacs-application-framework"]
-	path = site-lisp/emacs-application-framework
-	url = https://gitee.com/rgbit-emacs-package-mirror/emacs-application-framework.git
-	ignore = dirty
 [submodule "site-lisp/straight-pkg"]
 	path = site-lisp/straight
 	url = https://github.com/rgb-24bit/straight.el.git
