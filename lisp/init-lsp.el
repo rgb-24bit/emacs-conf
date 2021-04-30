@@ -18,7 +18,7 @@
 ;; nox
 ;; =============================================================================
 
-(use-package nox
+(use-package-straight nox
   :commands (nox-ensure)
   :config
   (progn

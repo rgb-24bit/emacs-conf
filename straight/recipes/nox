@@ -1,0 +1,3 @@
+(nox :type git
+     :host github
+     :repo "manateelazycat/nox")

@@ -32,6 +32,7 @@
  ("magit" . "c7364e169648f454dc73fe50596d827fbf1f0fb7")
  ("markdown-mode" . "ac9ea26b941eef512a3c206375a6404625c229ed")
  ("melpa" . "935b812125d455df5b53a0ae0f2674e335b1bf3b")
+ ("nox" . "56f6bbc13af1b41e9b8860165aa673108f3c3367")
  ("origami.el" . "e558710a975e8511b9386edc81cd6bdd0a5bda74")
  ("page-break-lines" . "3b8549cd414d4d7ee0168ab9917124133566d3db")
  ("pfuture" . "d7926de3ba0105a36cfd00811fd6278aea903eef")
