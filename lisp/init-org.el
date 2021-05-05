@@ -38,6 +38,8 @@
     (setq org-fontify-done-headline nil)
     ;; simple template
     (require 'org-tempo)
+    ;; export
+    (require 'ox-gfm)
     ;; https://github.com/syl20bnr/spacemacs/commit/145126875731e8ee38770b2adf709805f23672f7
     ;; https://github.com/integral-dw/org-superstar-mode#hide-leading-stars
     ;; This is usually the default, but keep in mind it must be nil
