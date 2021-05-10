@@ -83,7 +83,11 @@
 ;; code folding
 ;; =============================================================================
 
-(use-package-straight origami)
+(use-package-straight origami
+  :config
+  (general-def origami-mode-map
+    "C-=" 'origami-open-node
+    "C--" 'origami-close-node))
 
 (add-hook 'prog-mode-hook 'origami-mode)
 
