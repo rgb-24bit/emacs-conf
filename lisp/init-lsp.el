@@ -54,7 +54,7 @@
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-sideline-enable nil
-        lsp-ui-doc-delay 2)
+        lsp-ui-doc-enable nil)
   (general-def lsp-ui-mode-map
     "C-x ." 'lsp-ui-doc-focus-frame))
 
@@ -65,7 +65,8 @@
 (use-package-straight flycheck
   :defer t
   :config
-  (setq flycheck-idle-change-delay 2)
+  (setq flycheck-check-syntax-automatically '(save idle-change mode-enable)
+        flycheck-idle-change-delay 2)
   (general-def flycheck-mode-map
     "<f2>" 'flycheck-next-error))
 
