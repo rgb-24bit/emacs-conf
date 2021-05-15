@@ -70,6 +70,11 @@
 
   "T"     '(:ignore t :which-key "UI/Themes")
   "T F"   'emacsc/toggle-frame-fullscreen
+  "T T"   'emacsc/adjust-frame-opacity
+  "T ="   'emacsc/adjust-frame-opacity-+2
+  "T +"   'emacsc/adjust-frame-opacity-+2
+  "T -"   'emacsc/adjust-frame-opacity--2
+  "T _"   'emacsc/adjust-frame-opacity--2
 
   "a"     '(:ignore t :which-key "applications")
   "a p"   'list-processes

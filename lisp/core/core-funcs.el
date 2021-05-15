@@ -207,5 +207,26 @@ With negative N, comment out original line and use the absolute value."
 
   (message "Renamed to %s." new-name))
 
+(defun emacsc/adjust-frame-opacity (incr)
+  "Adjust the background opacity of by increment INCR."
+  (interactive "^p")
+  (unless (display-graphic-p)
+    (error "Cannot adjust opacity of this frame"))
+  (let* ((oldalpha (or (frame-parameter nil 'alpha) 100))
+         (oldalpha (if (listp oldalpha) (car oldalpha) oldalpha))
+         (newalpha (+ incr oldalpha)))
+    (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
+      (modify-frame-parameters nil (list (cons 'alpha newalpha))))))
+
+(defun emacsc/adjust-frame-opacity-+2 ()
+  "Adjust the background opacity of by increment +2."
+  (interactive)
+  (emacsc/adjust-frame-opacity +2))
+
+(defun emacsc/adjust-frame-opacity--2 ()
+  "Adjust the background opacity of by increment -2."
+  (interactive)
+  (emacsc/adjust-frame-opacity -2))
+
 (provide 'core-funcs)
 ;;; core-funcs.el ends here
