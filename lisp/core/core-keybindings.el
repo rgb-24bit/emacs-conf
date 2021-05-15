@@ -76,6 +76,8 @@
   )
 
 (general-def
+  "M-DEL"   'cycle-spacing
+
   "C-c C-n" 'emacsc/jump-next-func
   "C-c C-p" 'emacsc/jump-prev-func
   "C-c C-d" 'emacsc/duplicate-line-or-region)

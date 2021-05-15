@@ -14,7 +14,7 @@
 		ivy-virtual-abbreviate 'fullpath
 		ivy-count-format ""
 		projectile-completion-system 'ivy
-		ivy-magic-tilde nil
+		ivy-magic-tilde t
 		ivy-dynamic-exhibit-delay-ms 150
 		ivy-use-selectable-prompt t)
 
@@ -34,6 +34,8 @@
 (use-package-straight counsel)
 
 (setq-default counsel-mode-override-describe-bindings t)
+
+(setq counsel-find-file-at-point t)
 
 (with-eval-after-load 'counsel
   (setq-default ivy-initial-inputs-alist
