@@ -325,5 +325,13 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 (with-eval-after-load 'compile
   (add-hook 'compilation-finish-functions 'switch-to-buffer-other-window 'compilation))
 
+;; =============================================================================
+;; separedit
+;; =============================================================================
+
+(use-package-straight separedit
+  :config
+  (define-key prog-mode-map (kbd "C-c '") #'separedit))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
