@@ -10,6 +10,7 @@
     "gs" 'magit-status
     "gL" 'magit-list-repositories)
   :config
+  ;; issue - execute the `magit-list-repositories' not load magit, so, this config will not take effect
   (progn
     (when-let ((git (executable-find "git")))
       (setq magit-git-executable git))
