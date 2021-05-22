@@ -56,7 +56,9 @@
   (setq lsp-ui-sideline-enable nil
         lsp-ui-doc-enable nil)
   (general-def lsp-ui-mode-map
-    "C-x ." 'lsp-ui-doc-focus-frame))
+    "C-x ." 'lsp-ui-doc-focus-frame)
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 ;; =============================================================================
 ;; flycheck
