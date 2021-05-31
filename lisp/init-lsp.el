@@ -87,7 +87,8 @@
 (dolist (hook (list
                'rust-mode-local-vars-hook
                'go-mode-local-vars-hook
-               'python-mode-local-vars-hook))
+               'python-mode-local-vars-hook
+               'js-mode-local-vars-hook))
   (add-hook hook 'emacsc//setup-lsp))
 
 (provide 'init-lsp)
