@@ -67,8 +67,8 @@
 (use-package-straight flycheck
   :defer t
   :config
-  (setq flycheck-check-syntax-automatically '(save idle-change mode-enable)
-        flycheck-idle-change-delay 2)
+  (setq flycheck-check-syntax-automatically '(save)
+        flycheck-idle-change-delay 3)
   (general-def flycheck-mode-map
     "<f2>" 'flycheck-next-error))
 
