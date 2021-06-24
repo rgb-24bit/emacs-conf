@@ -53,7 +53,11 @@
 (use-package-straight lsp-ui
   :commands lsp-ui-mode
   :config
-  (setq lsp-ui-sideline-enable nil
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-code-actions nil
+        lsp-ui-sideline-show-diagnostics t
+        lsp-ui-sideline-update-mode 'line
+        lsp-ui-sideline-show-hover t
         lsp-ui-doc-enable nil)
   (general-def lsp-ui-mode-map
     "C-x ." 'lsp-ui-doc-focus-frame)
