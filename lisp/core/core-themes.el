@@ -127,6 +127,18 @@
 (add-hook 'after-init-hook 'global-hl-line-mode)
 
 ;; =============================================================================
+;; display trailing whitespace
+;; =============================================================================
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (set-face-attribute 'trailing-whitespace nil
+                                :background
+                                (face-attribute 'font-lock-comment-face
+                                                :foreground))
+            (setq show-trailing-whitespace t)))
+
+;; =============================================================================
 ;; remove gui elements
 ;; =============================================================================
 

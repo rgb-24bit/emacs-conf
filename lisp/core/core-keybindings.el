@@ -49,7 +49,7 @@
   "f D"   'emacsc/delete-current-buffer-file
   "f C"   'emacsc/copy-file
   "f R"   'emacsc/rename-file-and-buffer
-  
+
   "f e"   '(:ignore t :which-key "emacs")
   "f e d" 'emacsc/open-init-file
   "f e p" 'emacsc/open-environ-config
@@ -78,6 +78,11 @@
 
   "a"     '(:ignore t :which-key "applications")
   "a p"   'list-processes
+
+  "x"     '(:ignore t :which-key "text")
+  "x d"   '(:ignore t :which-key "delete")
+  "x d w" 'delete-trailing-whitespace
+  "x d l" 'delete-trailing-lines
   )
 
 (general-def
