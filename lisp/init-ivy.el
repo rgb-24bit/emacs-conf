@@ -35,7 +35,7 @@
 
 (setq-default counsel-mode-override-describe-bindings t)
 
-(setq counsel-find-file-at-point t)
+(setq counsel-find-file-at-point nil)
 
 (with-eval-after-load 'counsel
   (setq-default ivy-initial-inputs-alist
