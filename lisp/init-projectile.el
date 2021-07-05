@@ -63,7 +63,8 @@
       "p f" 'projectile-find-file
       "p d" 'projectile-find-dir
       "p p" 'projectile-switch-project
-      "p m" 'projectile-remove-known-project)
+      "p m" 'projectile-remove-known-project
+      "p k" 'projectile-kill-buffers)
 
     (projectile-mode)))
 
