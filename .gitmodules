@@ -8,3 +8,6 @@
 	path = site-lisp/straight
 	url = https://github.com/rgb-24bit/straight.el.git
 	branch = develop
+[submodule "site-lisp/color-theme-sanityinc-tomorrow"]
+	path = site-lisp/color-theme-sanityinc-tomorrow
+	url = https://github.com/purcell/color-theme-sanityinc-tomorrow.git

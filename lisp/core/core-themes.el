@@ -10,6 +10,7 @@
 ;; =============================================================================
 
 (require 'color-theme-sanityinc-solarized)
+(require 'color-theme-sanityinc-tomorrow)
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
