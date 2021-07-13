@@ -42,7 +42,8 @@
   (setq lsp-enable-symbol-highlighting nil
         lsp-lens-enable nil
         lsp-completion-provider :none
-        lsp-modeline-code-actions-enable nil)
+        lsp-modeline-code-actions-enable nil
+        lsp-auto-execute-action nil)
   (general-def lsp-mode-map
     "S-<f6>" 'lsp-rename
     "C-M-l"  'lsp-format-buffer
