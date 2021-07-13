@@ -4,6 +4,8 @@
 
 (require 'cl-lib)
 
+(use-package-straight f)
+
 (defcustom emacsc-ignored-project-directories
   '("~/.cargo/registry" "~/.rustup" "~/go/pkg" "~/.emacs.d/site-lisp" "~/.emacs.d/straight")
   "Ignore projects under these directories."
