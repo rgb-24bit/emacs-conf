@@ -1,6 +1,7 @@
 (("ace-window" . "c7cb315c14e36fded5ac4096e158497ae974bec9")
  ("avy" . "e92cb37457b43336b765630dbfbea8ba4be601fa")
  ("awesome-pair" . "dfc47a5640fa2f5ddd677c376ff70ab58a2e566e")
+ ("cargo.el" . "1dd9771853b4327ed161232b65520c13ffe3c0c6")
  ("cfrs" . "7c42f2c82c7ae689f3ef291b066688c58ab96298")
  ("clean-aindent-mode" . "a97bcae8f43a9ff64e95473e4ef0d8bafe829211")
  ("company-mode" . "4286972775832e29434becc6c72e767319139a1c")

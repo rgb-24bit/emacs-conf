@@ -22,5 +22,9 @@
     "m t t" 'rust-test
     ))
 
+(use-package-straight cargo
+  :hook (rust-mode-hook . cargo-minor-mode))
+
+
 (provide 'init-rust)
 ;;; init-rust.el ends here
