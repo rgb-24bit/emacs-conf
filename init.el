@@ -95,6 +95,7 @@
 (require 'init-treemacs)
 
 (when emacsc-system-is-mac
+  (require 'init-org-roam)
   (require 'init-vterm))
 
 ;; (when (not emacsc-system-is-mac)
