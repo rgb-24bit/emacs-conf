@@ -9,6 +9,7 @@
 
 (use-package org
   :commands (org-clock-out org-occur-in-agenda-files org-agenda-files orgtbl-mode)
+  :straight org-plus-contrib
   :defer t
   :config
   (progn
