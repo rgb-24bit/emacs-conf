@@ -107,5 +107,21 @@
 (use-package-straight htmlize
   :defer t)
 
+(use-package-straight org-roam
+  :custom (org-roam-directory "~/repositories/notebook")
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :init
+  (setq org-roam-v2-ack t)
+  (setq org-roam-db-location (expand-file-name "org-roam.db" emacsc-cache-directory)
+        org-id-locations-file (expand-file-name ".org-id-locations" emacsc-cache-directory))
+  :config
+  (org-roam-setup))
+
 (provide 'init-org)
 ;;; init-org.el ends here
