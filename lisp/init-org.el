@@ -78,7 +78,7 @@
   :config
   ;; Org-capture template settings
   ;; https://www.zmonster.me/2018/02/28/org-mode-capture.html
-   (setq org-capture-templates
+  (setq org-capture-templates
         '(("t" "Task" entry (file+headline emacsc-org-capture-task-file "Task")
            "* TODO [#B] %^{HEADLINE} %^g\n  %?"
            :empty-lines 1)
@@ -109,18 +109,67 @@
 
 (use-package-straight org-roam
   :custom (org-roam-directory "~/repositories/notebook")
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
+  :bind (("C-c n l"   . org-roam-buffer-toggle)
+         ("C-c n f"   . org-roam-node-find)
+         ("C-c n i"   . org-roam-node-insert)
+         ("C-c n c"   . org-roam-capture)
+         ("C-c n a"   . org-roam-alias-add)
+         ("C-c n r"   . org-roam-ref-add)
+         ("C-c n k a" . org-roam-alias-remove)
+         ("C-c n k r" . org-roam-ref-remove)
          ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+         ("C-c n j"   . org-roam-dailies-capture-today))
   :init
   (setq org-roam-v2-ack t)
   (setq org-roam-db-location (expand-file-name "org-roam.db" emacsc-cache-directory)
         org-id-locations-file (expand-file-name ".org-id-locations" emacsc-cache-directory))
   :config
+  (cl-defmethod org-roam-node-slug ((node org-roam-node))
+    "Custom slug format, ref https://github.com/org-roam/org-roam/pull/1544"
+    (let ((title (org-roam-node-title node))
+          (slug-trim-chars '(;; Combining Diacritical Marks https://www.unicode.org/charts/PDF/U0300.pdf
+                             768 ; U+0300 COMBINING GRAVE ACCENT
+                             769 ; U+0301 COMBINING ACUTE ACCENT
+                             770 ; U+0302 COMBINING CIRCUMFLEX ACCENT
+                             771 ; U+0303 COMBINING TILDE
+                             772 ; U+0304 COMBINING MACRON
+                             774 ; U+0306 COMBINING BREVE
+                             775 ; U+0307 COMBINING DOT ABOVE
+                             776 ; U+0308 COMBINING DIAERESIS
+                             777 ; U+0309 COMBINING HOOK ABOVE
+                             778 ; U+030A COMBINING RING ABOVE
+                             780 ; U+030C COMBINING CARON
+                             795 ; U+031B COMBINING HORN
+                             803 ; U+0323 COMBINING DOT BELOW
+                             804 ; U+0324 COMBINING DIAERESIS BELOW
+                             805 ; U+0325 COMBINING RING BELOW
+                             807 ; U+0327 COMBINING CEDILLA
+                             813 ; U+032D COMBINING CIRCUMFLEX ACCENT BELOW
+                             814 ; U+032E COMBINING BREVE BELOW
+                             816 ; U+0330 COMBINING TILDE BELOW
+                             817 ; U+0331 COMBINING MACRON BELOW
+                             )))
+      (cl-flet* ((nonspacing-mark-p (char)
+                                    (memq char slug-trim-chars))
+                 (strip-nonspacing-marks (s)
+                                         (ucs-normalize-NFC-string
+                                          (apply #'string (seq-remove #'nonspacing-mark-p
+                                                                      (ucs-normalize-NFD-string s)))))
+                 (cl-replace (title pair)
+                             (replace-regexp-in-string (car pair) (cdr pair) title)))
+        (let* ((pairs `(("[^[:alnum:][:digit:]]" . "-")  ;; convert anything not alphanumeric
+                        ("__*" . "_")  ;; remove sequential underscores
+                        ("^_" . "")    ;; remove starting underscore
+                        ("_$" . "")))  ;; remove ending underscore
+               (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
+          (downcase slug)))))
+
+  (setq org-roam-capture-templates
+        '(("d" "default" plain "%?"
+           :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
+           :empty-lines 1
+           :unnarrowed  t)))
+
   (org-roam-setup))
 
 (provide 'init-org)
