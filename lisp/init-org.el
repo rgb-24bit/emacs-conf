@@ -9,7 +9,7 @@
 
 (use-package org
   :commands (org-clock-out org-occur-in-agenda-files org-agenda-files orgtbl-mode)
-  :straight org-plus-contrib
+  :straight org-contrib
   :defer t
   :config
   (progn
@@ -112,6 +112,7 @@
   :bind (("C-c n l"   . org-roam-buffer-toggle)
          ("C-c n f"   . org-roam-node-find)
          ("C-c n i"   . org-roam-node-insert)
+         ("C-c n g"   . org-roam-graph)
          ("C-c n c"   . org-roam-capture)
          ("C-c n a"   . org-roam-alias-add)
          ("C-c n r"   . org-roam-ref-add)
@@ -164,7 +165,7 @@
                (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
           (downcase slug)))))
 
-  (setq org-roam-graph-link-hidden-types '("file" "custom-id" "https"))
+  (setq org-roam-graph-link-hidden-types '("file" "custom-id" "https" "fuzzy"))
 
   (setq org-roam-capture-templates
         '(("d" "default" plain "%?"
