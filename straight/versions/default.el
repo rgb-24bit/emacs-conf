@@ -56,7 +56,7 @@
  ("spinner" . "e19f3cfc0646c0e23c10c22df219fcf427054621")
  ("swiper" . "471d644d6bdd7d5dc6ca4efb405e6a6389dff245")
  ("transient" . "cc16a5eaa73617a281b0bbf71b24432c38994e30")
- ("treemacs" . "b92d43aa6974c8581ea7a4f4b3586041a7f44f32")
+ ("treemacs" . "ac920b2265ca24c0536dd4502f792f06638a6fdc")
  ("with-editor" . "ebcbd3b137154e6c5a2b976bacbb89d48ddfa242")
  ("yasnippet" . "5cbdbf0d2015540c59ed8ee0fcf4788effdf75b6"))
 :beta

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: toc
+# key: toc
+# --
+
+* 目录                                                    :TOC_4_gh:noexport:
+
+$0
