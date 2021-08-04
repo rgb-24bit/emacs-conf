@@ -37,6 +37,8 @@
     (setq org-startup-with-inline-images t)
     ;; not change headline face
     (setq org-fontify-done-headline nil)
+    ;; indet as old org version
+    (setq org-adapt-indentation t)
     ;; simple template
     (require 'org-tempo)
     ;; export
