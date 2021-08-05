@@ -119,9 +119,7 @@
          ("C-c n a"   . org-roam-alias-add)
          ("C-c n r"   . org-roam-ref-add)
          ("C-c n k a" . org-roam-alias-remove)
-         ("C-c n k r" . org-roam-ref-remove)
-         ;; Dailies
-         ("C-c n j"   . org-roam-dailies-capture-today))
+         ("C-c n k r" . org-roam-ref-remove))
   :init
   (setq org-roam-v2-ack t)
   (setq org-roam-db-location (expand-file-name "org-roam.db" emacsc-cache-directory)
