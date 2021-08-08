@@ -1,0 +1,4 @@
+(org-roam-ui :type git
+             :host github
+             :repo "org-roam/org-roam-ui"
+             :files ("*.el" "out"))

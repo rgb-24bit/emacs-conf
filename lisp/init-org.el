@@ -39,6 +39,8 @@
     (setq org-fontify-done-headline nil)
     ;; indet as old org version
     (setq org-adapt-indentation t)
+    ;; start up show 1 level
+    (setq org-startup-folded 'show1level)
     ;; simple template
     (require 'org-tempo)
     ;; export
@@ -174,6 +176,15 @@
            :unnarrowed  t)))
 
   (org-roam-setup))
+
+(use-package-straight org-roam-ui
+  :after org-roam
+  :config
+  (setq org-roam-ui-sync-theme nil
+        org-roam-ui-follow nil
+        org-roam-ui-update-on-save nil
+        org-roam-ui-open-on-start nil
+        org-roam-ui-port 10204))
 
 (provide 'init-org)
 ;;; init-org.el ends here
