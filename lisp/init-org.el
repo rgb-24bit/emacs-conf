@@ -167,7 +167,7 @@
                (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
           (downcase slug)))))
 
-  (setq org-roam-graph-link-hidden-types '("file" "custom-id" "https" "fuzzy"))
+  (setq org-roam-graph-link-hidden-types '("file" "custom-id" "http" "https" "fuzzy"))
 
   (setq org-roam-capture-templates
         '(("d" "default" plain "%?"
