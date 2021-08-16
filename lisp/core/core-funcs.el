@@ -40,9 +40,9 @@ If FORCE is non-nil, force recompile of all found `.el' files."
 current window."
   (interactive)
   (cl-destructuring-bind (buf start pos)
-      (cl-find (window-buffer window) (window-prev-buffers)
-               :key #'car :test-not #'eq)
-    (list (other-buffer) nil nil)
+      (progn (cl-find (window-buffer window) (window-prev-buffers)
+                      :key #'car :test-not #'eq)
+             (list (other-buffer) nil nil))
     (if (not buf)
         (message "Last buffer not found.")
       (set-window-buffer-start-and-point window buf start pos))))
