@@ -86,11 +86,16 @@
   )
 
 (general-def
-  "M-DEL"   'cycle-spacing
+  "M-DEL"        'cycle-spacing
 
-  "C-c C-n" 'emacsc/jump-next-func
-  "C-c C-p" 'emacsc/jump-prev-func
-  "C-c C-d" 'emacsc/duplicate-line-or-region)
+  "S-C-<left>"   'shrink-window-horizontally
+  "S-C-<right>"  'enlarge-window-horizontally
+  "S-C-<down>"   'shrink-window
+  "S-C-<up>"     'enlarge-window
+
+  "C-c C-n"      'emacsc/jump-next-func
+  "C-c C-p"      'emacsc/jump-prev-func
+  "C-c C-d"      'emacsc/duplicate-line-or-region)
 
 ;; =============================================================================
 ;; macos key modifier
