@@ -88,6 +88,8 @@
 (general-def
   "M-DEL"        'cycle-spacing
 
+  "S-SPC"        'set-mark-command
+
   "S-C-<left>"   'shrink-window-horizontally
   "S-C-<right>"  'enlarge-window-horizontally
   "S-C-<down>"   'shrink-window
