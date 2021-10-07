@@ -60,6 +60,7 @@
       (org-mark-element)
       (kill-region (region-beginning) (region-end)))
     (define-key org-mode-map (kbd "C-c e d") 'emacsc//org-delete-element)
+    (define-key org-mode-map (kbd "C-c SPC") 'org-table-blank-field)
 
     (with-eval-after-load 'org
       (progn
