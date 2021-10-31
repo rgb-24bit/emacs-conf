@@ -90,8 +90,7 @@
 ;; init page-break-lines
 ;; =============================================================================
 
-(use-package-straight page-break-lines
-  :config (global-page-break-lines-mode))
+(use-package-straight page-break-lines)
 
 ;; =============================================================================
 ;; init dashboard

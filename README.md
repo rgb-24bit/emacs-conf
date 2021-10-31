@@ -44,6 +44,10 @@ $ git submodule foreach 'git checkout -f'
 I use require to load the configuration file, which makes the straight related functions not re-executed when the init file is reloaded.
 You can restart emacs to execute `straight-freeze-versions`. [raxod502/straight.el#437](https://github.com/raxod502/straight.el/issues/437)
 
+OR `C-u straight-freeze-versions`.
+
+4. Some packages on elpa may modify the recipe definition, so upgrade elpa before upgrading the package.
+
 ### Reference configuration
 
 + [purcell/emacs.d](https://github.com/purcell/emacs.d)
