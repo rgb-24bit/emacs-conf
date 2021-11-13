@@ -185,7 +185,7 @@
         org-roam-ui-follow nil
         org-roam-ui-update-on-save nil
         org-roam-ui-open-on-start nil
-        org-roam-ui-port 10204))
+        org-roam-ui-port 35901))
 
 (provide 'init-org)
 ;;; init-org.el ends here

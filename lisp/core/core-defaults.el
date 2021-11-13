@@ -38,7 +38,8 @@
 
 ;; explicitly set the preferred coding systems to avoid annoying prompt
 ;; from emacs (especially on Microsoft Windows)
-(prefer-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
 
 ;; auto revert
 (global-auto-revert-mode)
