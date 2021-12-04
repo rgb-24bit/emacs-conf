@@ -128,7 +128,8 @@
   (setq org-roam-db-location (expand-file-name "org-roam.db" emacsc-cache-directory)
         org-id-locations-file (expand-file-name ".org-id-locations" emacsc-cache-directory))
   :config
-  (cl-defmethod org-roam-node-slug ((node org-roam-node))
+  (with-eval-after-load 'org-roam-node
+    (cl-defmethod org-roam-node-slug ((node org-roam-node))
     "Custom slug format, ref https://github.com/org-roam/org-roam/pull/1544"
     (let ((title (org-roam-node-title node))
           (slug-trim-chars '(;; Combining Diacritical Marks https://www.unicode.org/charts/PDF/U0300.pdf
@@ -166,7 +167,7 @@
                         ("^_" . "")    ;; remove starting underscore
                         ("_$" . "")))  ;; remove ending underscore
                (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
-          (downcase slug)))))
+          (downcase slug))))))
 
   (setq org-roam-graph-link-hidden-types '("file" "custom-id" "http" "https" "fuzzy"))
 
