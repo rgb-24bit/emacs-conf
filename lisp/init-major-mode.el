@@ -3,10 +3,12 @@
 ;;; Code:
 
 (use-package thrift-mode
-  :mode "\\.thrift\\'")
+  :mode "\\.thrift\\'"
+  :hook (thrift-mode . display-line-numbers-mode))
 
 (use-package protobuf-mode
-  :mode "\\.proto\\'")
+  :mode "\\.proto\\'"
+  :hook (protobuf-mode . display-line-numbers-mode))
 
 (use-package json-mode
   :mode "\\.json\\'")
