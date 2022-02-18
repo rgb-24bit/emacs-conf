@@ -333,5 +333,14 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   :config
   (define-key prog-mode-map (kbd "C-c '") #'separedit))
 
+;; =============================================================================
+;; pangu-spacing
+;; =============================================================================
+
+(use-package-straight pangu-spacing
+  :commands pangu-spacing-space-current-buffer
+  :init
+  (emacsc-leader-def "x =" '(pangu-spacing-space-current-buffer :which-key "pangu spacing buffer")))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

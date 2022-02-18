@@ -44,6 +44,7 @@
  ("org-roam-ui" . "c93f6b61a8d3d2edcf07eda6220278c418d1054b")
  ("origami.el" . "e558710a975e8511b9386edc81cd6bdd0a5bda74")
  ("page-break-lines" . "3b8549cd414d4d7ee0168ab9917124133566d3db")
+ ("pangu-spacing" . "f92898949ba3bf991fd229416f3bbb54e9c6c223")
  ("pfuture" . "d7926de3ba0105a36cfd00811fd6278aea903eef")
  ("pkg-info" . "76ba7415480687d05a4353b27fea2ae02b8d9d61")
  ("posframe" . "5cc13723139181ba77694080fc772c645b200135")
