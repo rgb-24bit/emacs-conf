@@ -9,8 +9,7 @@
 
 (use-package org
   :commands (org-clock-out org-occur-in-agenda-files org-agenda-files orgtbl-mode)
-  :straight org-contrib
-  :defer t
+  :straight (org :host github :repo "emacsmirror/org")
   :config
   (progn
     ;; org-mode programming language support settings
@@ -71,6 +70,10 @@
 
         (setq org-todo-keywords
               '((sequence "TODO(t!)" "NEXT(n)" "WAIT(w)" "|" "DONE(d@/!)" "ABORT(a@/!)")))))))
+
+(use-package org-contrib
+  :straight (org-contrib :host github :repo "emacsmirror/org-contrib")
+  :defer t)
 
 (use-package org-agenda
   :defer t

@@ -6,7 +6,7 @@
 	url = https://github.com/rgb-24bit/color-theme-sanityinc-solarized.git
 [submodule "site-lisp/straight-pkg"]
 	path = site-lisp/straight
-	url = https://github.com/rgb-24bit/straight.el.git
+	url = git@github.com:rgb-24bit/straight.el.git
 	branch = develop
 [submodule "site-lisp/color-theme-sanityinc-tomorrow"]
 	path = site-lisp/color-theme-sanityinc-tomorrow
