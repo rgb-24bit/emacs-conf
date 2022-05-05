@@ -226,7 +226,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
                  'swift-mode-hook
                  'minibuffer-inactive-mode-hook
                  ))
-    (add-hook hook '(lambda () (awesome-pair-mode))))
+    (add-hook hook #'(lambda () (awesome-pair-mode))))
   :config
   (define-key awesome-pair-mode-map (kbd "(") 'awesome-pair-open-round)
   (define-key awesome-pair-mode-map (kbd "[") 'awesome-pair-open-bracket)

@@ -7,6 +7,7 @@
 
 (when (memq window-system '(mac ns x))
   (use-package-straight exec-path-from-shell)
+  (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
 (provide 'core-paths)

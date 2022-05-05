@@ -111,6 +111,7 @@
 
 (unless (server-running-p)
   (message "Starting a server...")
+  (setq server-socket-dir (expand-file-name "server" user-emacs-directory))
   (server-start))
 
 ;;; init.el ends here

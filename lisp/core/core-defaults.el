@@ -48,5 +48,8 @@
 ;; configurations based on local variables
 (add-hook 'hack-local-variables-hook #'emacsc//run-local-vars-mode-hook)
 
+;; close native comp warning
+(setq native-comp-async-report-warnings-errors nil)
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
