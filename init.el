@@ -31,7 +31,7 @@
       (init-gc-cons-threshold (* 128 1024 1024)))
   (setq gc-cons-threshold init-gc-cons-threshold)
   (add-hook 'emacs-startup-hook
-	    (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;; =============================================================================
 ;; Pre config
@@ -42,33 +42,33 @@
   (set-face-attribute
    'default nil
    :font (font-spec :name "-outline-Source Code Pro-bold-italic-normal-mono-*-*-*-*-c-*-iso10646-1"
-		    :weight 'normal
-		    :slant 'normal
-		    :size 10.0))
+                    :weight 'normal
+                    :slant 'normal
+                    :size 10.0))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
      (font-spec :name "-outline-微软雅黑-normal-normal-normal-sans-*-*-*-*-p-*-iso10646-1"
-		:weight 'normal
-		:slant 'normal
-		:size 12.0))))
+                :weight 'normal
+                :slant 'normal
+                :size 12.0))))
 
  (emacsc-system-is-mac
   (set-face-attribute
    'default nil
    :font (font-spec :name "-*-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"
-		    :weight 'normal
-		    :slant 'normal
-		    :size 14))
+                    :weight 'normal
+                    :slant 'normal
+                    :size 14))
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
      (font-spec :name "-*-STKaiti-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
-		:weight 'normal
-		:slant 'normal
-		:size 16.5)))))
+                :weight 'normal
+                :slant 'normal
+                :size 16.5)))))
 
 ;; =============================================================================
 ;; Bootstrap config
@@ -109,9 +109,10 @@
 
 (require 'server)
 
+(setq server-socket-dir (expand-file-name "server" user-emacs-directory))
+
 (unless (server-running-p)
   (message "Starting a server...")
-  (setq server-socket-dir (expand-file-name "server" user-emacs-directory))
   (server-start))
 
 ;;; init.el ends here

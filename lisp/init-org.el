@@ -96,7 +96,8 @@
            :empty-lines 1)
           ("is" "Idea.S" entry (file emacsc-org-capture-idea-file)
            "* Idea.S %^{HEADLINE}\n  %?"
-           :empty-lines 1))))
+           :empty-lines 1)))
+  (setq org-capture-bookmark nil))
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
 (define-key global-map (kbd "C-c a") 'org-agenda)
