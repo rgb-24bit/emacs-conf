@@ -342,5 +342,13 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   :init
   (emacsc-leader-def "x =" '(pangu-spacing-space-current-buffer :which-key "pangu spacing buffer")))
 
+;; =============================================================================
+;; multi cursor
+;; =============================================================================
+
+(use-package-straight multiple-cursors
+  :commands mc/edit-lines
+  :init (setq mc/always-run-for-all t))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

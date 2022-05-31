@@ -37,6 +37,7 @@
  ("magit" . "c7364e169648f454dc73fe50596d827fbf1f0fb7")
  ("markdown-mode" . "ac9ea26b941eef512a3c206375a6404625c229ed")
  ("melpa" . "1a054aba2409fb8ae12a634952f3d1336a14eb70")
+ ("multiple-cursors.el" . "fd8441bfc8738d463601823e5a3d9c2d7123bfbf")
  ("nox" . "56f6bbc13af1b41e9b8860165aa673108f3c3367")
  ("org" . "8df3e25db8a629bbffa883edadb13a55239ae4b7")
  ("org-contrib" . "fc81309cf6756607a836f93049a9393c2967c4e0")
