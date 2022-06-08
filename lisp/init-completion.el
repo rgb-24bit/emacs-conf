@@ -1,4 +1,4 @@
-;;; init-company.el --- init company mode config -*- lexical-binding: t; -*-
+;;; init-completion.el --- init completion config -*- lexical-binding: t; -*-
 
 ;;; Code:
 
@@ -11,7 +11,8 @@
           company-require-match nil
           company-dabbrev-ignore-case nil
           company-show-numbers t
-          company-dabbrev-downcase nil))
+          company-dabbrev-downcase nil)
+    (setq company-global-modes '(not lsp-bridge-mode)))
   (add-hook 'after-init-hook (global-company-mode))
   :config
   (defun company-mode/backend-with-yas (backend)
@@ -21,6 +22,5 @@
               '(:with company-yasnippet))))
   (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends)))
 
-
-(provide 'init-company)
-;;; init-company.el ends here
+(provide 'init-completion)
+;;; init-completion.el ends here

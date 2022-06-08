@@ -80,6 +80,10 @@
 
 (straight-use-recipes '(emacsc :type built-in :build nil))
 
+;; make emacsc has higher priority
+(setq straight-recipe-repositories
+      '(emacsc org-elpa melpa gnu-elpa-mirror el-get emacsmirror-mirror))
+
 ;; =============================================================================
 ;; init use-package
 ;; =============================================================================

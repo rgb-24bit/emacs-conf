@@ -66,6 +66,7 @@
       "p d" 'projectile-find-dir
       "p p" 'projectile-switch-project
       "p m" 'projectile-remove-known-project
+      "p c" 'projectile-cleanup-known-projects
       "p k" 'projectile-kill-buffers)
 
     (projectile-mode)))

@@ -1,0 +1,4 @@
+(corfu :type git
+       :host github
+       :repo "minad/corfu"
+       :files ("corfu.el" "extensions/*.el"))

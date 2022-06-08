@@ -2,22 +2,18 @@
 
 ;;; Code:
 
-(defvar emacsc-powerline-scale (if emacsc-system-is-windows 0.5 1.0)
-  "allows to quickly tweak the mode-line size to make separators look not too crappy.")
-
 ;; =============================================================================
 ;; init themes
 ;; =============================================================================
 
-(require 'color-theme-sanityinc-solarized)
-(require 'color-theme-sanityinc-tomorrow)
+(use-package-straight doom-themes)
 
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
 (setq custom-safe-themes t)
 
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
+(setq-default custom-enabled-themes '(doom-one))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -56,34 +52,22 @@
         winum-auto-setup-mode-line nil)
   :hook (after-init . winum-mode))
 
-(defun emacsc/compute-mode-line-height (scale)
-  "Return an adjusted mode-line height."
-  (truncate (* scale (frame-char-height))))
+;; =============================================================================
+;; modeline
+;; =============================================================================
 
-(use-package-straight powerline
-  :defer t
-  :init
-  (setq-default powerline-height (emacsc/compute-mode-line-height emacsc-powerline-scale)))
-
-(use-package maple-modeline
-  :hook (after-init . maple-modeline-mode)
+(use-package-straight doom-modeline
+  :hook (after-init . doom-modeline-mode)
   :config
-  (maple-modeline-define datetime
-    :format
-    (format-time-string "%m-%d %k:%M"))
-
-  (maple-modeline-set emacsc
-    :left '((window-number :left (bar :left "")) macro iedit anzu buffer-info major-mode flycheck version-control remote-host region)
-    :right '(message narrow python lsp misc-info process datetime count position))
-
-  ;; standard, minimal, sidebar
-  (setq maple-modeline-style 'emacsc)
-  ;; show icon, just for version-control
-  (setq maple-modeline-icon nil)
-  ;; standard or auto or some number
-  (setq maple-modeline-width 'standard)
-  ;; hidden message on modeline
-  (setq maple-modeline-message-p nil)
+  (setq display-time-format "%m-%d %k:%M")
+  (display-time)
+  (setq doom-modeline-icon nil)
+  ;; (doom-modeline-def-modeline 'emacsc-modeline
+  ;;   '(bar window-number buffer-info major-mode matches checker vcs remote-host parrot selection-info)
+  ;;   '(misc-info minor-modes input-method buffer-encoding process buffer-position))
+  ;; (defun setup-custom-doom-modeline ()
+  ;;  (doom-modeline-set-modeline 'emacsc-modeline 'default))
+  ;; (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
   )
 
 ;; =============================================================================
@@ -137,6 +121,14 @@
                                 (face-attribute 'font-lock-comment-face
                                                 :foreground))
             (setq show-trailing-whitespace t)))
+
+
+;; =============================================================================
+;; all the icons
+;; =============================================================================
+
+(use-package-straight all-the-icons
+  :if (display-graphic-p))
 
 ;; =============================================================================
 ;; remove gui elements

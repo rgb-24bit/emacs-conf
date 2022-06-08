@@ -5,65 +5,25 @@
 (defcustom emacsc-enable-lsp nil
   "Whether to use lsp, default is `nil'. Can be set by buffer local or dired local.")
 
-(defcustom emacsc-lsp-client 'nox
-  "Specify the lsp client used by emacs."
-  :type '(choice
-          (const :tag "nox" nox)
-          (const :tag "lsp-mode" lsp-mode)))
-
 (use-package-straight posframe
   :defer t)
 
 ;; =============================================================================
-;; nox
+;; lsp-bridge
 ;; =============================================================================
 
-(use-package-straight nox
-  :commands (nox-ensure)
-  :config
-  (progn
-    (general-def nox-mode-map
-      "S-<f6>" 'nox-rename
-      "C-M-l"  'nox-format
-      "C-h ."  'nox-show-doc)))
+(use-package-straight lsp-bridge)
 
-;; =============================================================================
-;; lsp-mode
-;; =============================================================================
+;; (global-lsp-bridge-mode)
 
-(use-package-straight lsp-mode
-  :init
-  (setq lsp-keymap-prefix "M-m m l")
-  :hook
-  ((lsp-mode . lsp-enable-which-key-integration))
-  :commands
-  (lsp lsp-deferred)
-  :config
-  (setq lsp-enable-symbol-highlighting nil
-        lsp-lens-enable nil
-        lsp-completion-provider :none
-        lsp-modeline-code-actions-enable nil
-        lsp-auto-execute-action nil)
-  (general-def lsp-mode-map
-    "S-<f6>" 'lsp-rename
-    "C-M-l"  'lsp-format-buffer
-    "C-h ."  'lsp-describe-thing-at-point
-    "M-RET"  'lsp-execute-code-action)
-  (define-key lsp-mode-map (kbd "TAB") nil))
+;; acm conflict with company
+(add-hook 'acm-mode-hook '(lambda () (company-mode -1)))
 
-(use-package-straight lsp-ui
-  :commands lsp-ui-mode
-  :config
-  (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-update-mode 'line
-        lsp-ui-sideline-show-hover t
-        lsp-ui-doc-enable nil)
-  (general-def lsp-ui-mode-map
-    "C-x ." 'lsp-ui-doc-focus-frame)
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+(general-def lsp-bridge-mode-map
+  "M-,"    'lsp-bridge-return-from-def
+  "M-."    'lsp-bridge-find-def
+  "M-?"    'lsp-bridge-find-references
+  "S-<f6>" 'lsp-bridge-rename)
 
 ;; =============================================================================
 ;; flycheck
@@ -83,11 +43,7 @@
 
 (defun emacsc//setup-lsp ()
   "setup the lsp support, when `emacsc-enable-lsp' is t."
-  (when emacsc-enable-lsp
-    (cl-case emacsc-lsp-client
-      (nox (nox-ensure))
-      (lsp-mode (lsp-deferred))
-      (t (message "unsupported lsp client %s" emacsc-lsp-client)))))
+  (when emacsc-enable-lsp (lsp-bridge-mode)))
 
 (dolist (hook (list
                'rust-mode-local-vars-hook
