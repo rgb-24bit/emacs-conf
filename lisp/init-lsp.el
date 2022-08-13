@@ -43,9 +43,11 @@
 
 (defun emacsc//setup-lsp ()
   "setup the lsp support, when `emacsc-enable-lsp' is t."
-  (when emacsc-enable-lsp (lsp-bridge-mode)))
+  (when emacsc-enable-lsp
+    (lsp-bridge-mode)))
 
 (dolist (hook (list
+               'emacs-lisp-mode-local-vars-hook
                'rust-mode-local-vars-hook
                'go-mode-local-vars-hook
                'python-mode-local-vars-hook

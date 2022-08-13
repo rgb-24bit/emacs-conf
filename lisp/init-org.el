@@ -125,8 +125,11 @@
          ("C-c n c"   . org-roam-capture)
          ("C-c n a"   . org-roam-alias-add)
          ("C-c n r"   . org-roam-ref-add)
+         ("C-c n t"   . org-roam-tag-add)
+         ("C-c n n"   . org-roam-node-random)
          ("C-c n k a" . org-roam-alias-remove)
-         ("C-c n k r" . org-roam-ref-remove))
+         ("C-c n k r" . org-roam-ref-remove)
+         ("C-c n k t" . org-roam-tag-remove))
   :init
   (setq org-roam-v2-ack t)
   (setq org-roam-db-location (expand-file-name "org-roam.db" emacsc-cache-directory)

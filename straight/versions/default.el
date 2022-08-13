@@ -34,7 +34,7 @@
  ("hydra" . "2d553787aca1aceb3e6927e426200e9bb9f056f1")
  ("ledger-mode" . "3b0fa5c22bd196dbe31a19f4b2ebbdf8f4081b20")
  ("let-alist" . "6708ec0b2e6dff80ff5b64698aa009d9070a2ed2")
- ("lsp-bridge" . "1e487376d6ba792637642edf0eb18d124d405c49")
+ ("lsp-bridge" . "9ff5e9aa9791495f63f55710b6e34454afffe6ca")
  ("lsp-mode" . "54cb9a81d97c9f19ebea34510844ac7b69e755bc")
  ("lsp-ui" . "efae00eb6a733d5271cb33e9d92c3d8c2fa98dde")
  ("magit" . "c7364e169648f454dc73fe50596d827fbf1f0fb7")

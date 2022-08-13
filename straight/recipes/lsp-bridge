@@ -1,4 +1,4 @@
 (lsp-bridge :type git
             :host github
             :repo "manateelazycat/lsp-bridge"
-            :files ("lsp-bridge*.el" "acm/*.el" "acm/icons" "*.py" "core" "langserver"))
+            :files ("lsp-bridge*.el" "acm/*.el" "acm/icons" "*.py" "core" "langserver" "multiserver"))
