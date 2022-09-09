@@ -97,7 +97,12 @@
 
   "C-c C-n"      'emacsc/jump-next-func
   "C-c C-p"      'emacsc/jump-prev-func
-  "C-c C-d"      'emacsc/duplicate-line-or-region)
+  "C-c C-d"      'emacsc/duplicate-line-or-region
+
+  "C-x <left>"   'windmove-left
+  "C-x <right>"  'windmove-right
+  "C-x <down>"   'windmove-down
+  "C-x <up>"     'windmove-up)
 
 ;; =============================================================================
 ;; macos key modifier
