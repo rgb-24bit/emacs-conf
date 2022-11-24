@@ -6,7 +6,9 @@
 ;; ivy
 ;; =============================================================================
 
-(use-package-straight smex)
+(use-package-straight smex
+  :init
+  (setq smex-save-file (expand-file-name ".smex-items" emacsc-cache-directory)))
 (use-package-straight ivy)
 
 (with-eval-after-load 'ivy

@@ -155,25 +155,29 @@ operations after each indent operations have been done."
 ;; highlight symbol
 ;; =============================================================================
 
-(defun emacsc/regexp-at-point ()
-  "if region active, return the region,
-otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
-  (if (region-active-p)
-      (buffer-substring-no-properties
-       (region-beginning) (region-end))
-    (format "\\_<%s\\_>" (thing-at-point 'symbol t))))
+(use-package-straight highlight-symbol
+  :commands highlight-symbol
+  :bind ("C-'" . highlight-symbol))
 
-(defun emacsc/toggle-highlight-at-point ()
-  "Toggle highlight at point (region or symbol)."
-  (interactive)
-  (require 'hi-lock)
-  (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns))
-        (hi-regexp-at-pt (emacsc/regexp-at-point))
-        (hi-lock-auto-select-face t))
-    (if (member hi-regexp-at-pt hi-regexp-list)
-        (unhighlight-regexp hi-regexp-at-pt)
-      (highlight-phrase hi-regexp-at-pt (hi-lock-read-face-name)))
-    (deactivate-mark)))
+;; (defun emacsc/regexp-at-point ()
+;;   "if region active, return the region,
+;; otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
+;;   (if (region-active-p)
+;;       (buffer-substring-no-properties
+;;        (region-beginning) (region-end))
+;;     (format "\\_<%s\\_>" (thing-at-point 'symbol t))))
+
+;; (defun emacsc/toggle-highlight-at-point ()
+;;   "Toggle highlight at point (region or symbol)."
+;;   (interactive)
+;;   (require 'hi-lock)
+;;   (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns))
+;;         (hi-regexp-at-pt (emacsc/regexp-at-point))
+;;         (hi-lock-auto-select-face t))
+;;     (if (member hi-regexp-at-pt hi-regexp-list)
+;;         (unhighlight-regexp hi-regexp-at-pt)
+;;       (highlight-phrase hi-regexp-at-pt (hi-lock-read-face-name)))
+;;     (deactivate-mark)))
 
 (defun emacsc/clear-all-highlight ()
   "clear all highlight."
@@ -181,7 +185,7 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns)))
     (mapcar 'unhighlight-regexp hi-regexp-list)))
 
-(global-set-key (kbd "C-'") 'emacsc/toggle-highlight-at-point)
+;; (global-set-key (kbd "C-'") 'emacsc/toggle-highlight-at-point)
 
 ;; =============================================================================
 ;; rainbow delimiters
@@ -241,7 +245,6 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 
   (define-key awesome-pair-mode-map (kbd "SPC") 'awesome-pair-space)
 
-  (define-key awesome-pair-mode-map (kbd "M-o") 'awesome-pair-backward-delete)
   (define-key awesome-pair-mode-map (kbd "C-d") 'awesome-pair-forward-delete)
   (define-key awesome-pair-mode-map (kbd "C-k") 'awesome-pair-kill)
 
@@ -282,6 +285,12 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
   :mode ("\\.http\\'" . restclient-mode))
 
 ;; =============================================================================
+;; one-key
+;; =============================================================================
+
+(use-package-straight one-key)
+
+;; =============================================================================
 ;; thing-edit
 ;; =============================================================================
 
@@ -300,23 +309,46 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
              thing-cut-comment
              thing-cut-filename)
   :init
-  (emacsc-leader-def
-    "e"     '(:ignore t :which-key "edit")
-    "e c"   '(:ignore t :which-key "copy")
-    "e c w" 'thing-copy-word
-    "e c e" 'thing-copy-email
-    "e c u" 'thing-copy-url
-    "e c l" 'thing-copy-line
-    "e c c" 'thing-copy-comment
-    "e c f" 'thing-copy-filename
-
-    "e k"   '(:ignore t :which-key "cut")
-    "e k w" 'thing-cut-word
-    "e k e" 'thing-cut-email
-    "e k u" 'thing-cut-url
-    "e k l" 'thing-cut-line
-    "e k c" 'thing-cut-comment
-    "e k f" 'thing-cut-filename))
+  (one-key-create-menu
+   "THING-EDIT"
+   '(
+     ;; Copy.
+     (("w" . "Copy Word") . thing-copy-word)
+     (("s" . "Copy Symbol") . thing-copy-symbol)
+     (("m" . "Copy Email") . thing-copy-email)
+     (("f" . "Copy Filename") . thing-copy-filename)
+     (("u" . "Copy URL") . thing-copy-url)
+     (("x" . "Copy Sexp") . thing-copy-sexp)
+     (("g" . "Copy Page") . thing-copy-page)
+     (("t" . "Copy Sentence") . thing-copy-sentence)
+     (("o" . "Copy Whitespace") . thing-copy-whitespace)
+     (("i" . "Copy List") . thing-copy-list)
+     (("c" . "Copy Comment") . thing-copy-comment)
+     (("h" . "Copy Function") . thing-copy-defun)
+     (("p" . "Copy Parentheses") . thing-copy-parentheses)
+     (("l" . "Copy Line") . thing-copy-line)
+     (("a" . "Copy To Line Begin") . thing-copy-to-line-beginning)
+     (("e" . "Copy To Line End") . thing-copy-to-line-end)
+     ;; Cut.
+     (("W" . "Cut Word") . thing-cut-word)
+     (("S" . "Cut Symbol") . thing-cut-symbol)
+     (("M" . "Cut Email") . thing-cut-email)
+     (("F" . "Cut Filename") . thing-cut-filename)
+     (("U" . "Cut URL") . thing-cut-url)
+     (("X" . "Cut Sexp") . thing-cut-sexp)
+     (("G" . "Cut Page") . thing-cut-page)
+     (("T" . "Cut Sentence") . thing-cut-sentence)
+     (("O" . "Cut Whitespace") . thing-cut-whitespace)
+     (("I" . "Cut List") . thing-cut-list)
+     (("C" . "Cut Comment") . thing-cut-comment)
+     (("H" . "Cut Function") . thing-cut-defun)
+     (("P" . "Cut Parentheses") . thing-cut-parentheses)
+     (("L" . "Cut Line") . thing-cut-line)
+     (("A" . "Cut To Line Begin") . thing-cut-to-line-beginning)
+     (("E" . "Cut To Line End") . thing-cut-to-line-end)
+     )
+   t)
+  (emacsc-leader-def "t" '(one-key-menu-thing-edit :which-key "thing edit")))
 
 ;; =============================================================================
 ;; compilation
@@ -349,6 +381,80 @@ otherwise return regexp like \"\\\\_<sym\\\\_>\" for the symbol at point."
 (use-package-straight multiple-cursors
   :commands mc/edit-lines
   :init (setq mc/always-run-for-all t))
+
+;; =============================================================================
+;; highlight-parentheses
+;; =============================================================================
+
+(use-package highlight-parentheses
+  :commands highlight-parentheses-mode
+  :hook (emacs-lisp-mode . highlight-parentheses-mode))
+
+;; =============================================================================
+;; open newline
+;; =============================================================================
+
+(use-package open-newline
+  :bind (("M-o" . open-neline-below)
+         ("M-O" . open-newline-above)))
+
+;; =============================================================================
+;; delete block
+;; =============================================================================
+
+(use-package delete-block
+  :commands (delete-block-forward delete-block-backward))
+
+;; =============================================================================
+;; duplicate line
+;; =============================================================================
+
+(use-package duplicate-line
+  :commands (duplicate-line-or-region-below)
+  :init
+  (emacsc-leader-def
+    "e"    '(:ignore t :which-key "edit")
+    "e d"  'duplicate-line-or-region-below))
+
+;; =============================================================================
+;; scroll
+;; =============================================================================
+
+(defun emacsc/scroll-up-one-line()
+  "Scroll up one line."
+  (interactive)
+  (scroll-up 1))
+
+(defun emacsc/scroll-down-one-line()
+  "Scroll down one line."
+  (interactive)
+  (scroll-down 1))
+
+(general-def
+  "S-<up>" 'emacsc/scroll-up-one-line
+  "S-<down>" 'emacsc/scroll-down-one-line)
+
+;; =============================================================================
+;; visual-regexp
+;; =============================================================================
+
+(use-package-straight visual-regexp
+  :bind ("M-%" . vr/query-replace))
+
+;; =============================================================================
+;; goto-line-preview
+;; =============================================================================
+
+(use-package-straight goto-line-preview
+  :init
+  (global-set-key [remap goto-line] 'goto-line-preview))
+
+;; =============================================================================
+;; toggle-one-window
+;; =============================================================================
+
+(use-package toggle-one-window
+  :commands toggle-one-window)
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

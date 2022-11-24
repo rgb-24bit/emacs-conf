@@ -1,0 +1,3 @@
+(grammatical-edit :type git
+                  :host github
+                  :repo "manateelazycat/grammatical-edit")

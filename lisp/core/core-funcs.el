@@ -214,5 +214,34 @@ With negative N, comment out original line and use the absolute value."
   (interactive)
   (emacsc/adjust-frame-opacity -2))
 
+(defun emacsc/remember-init ()
+  "Remember current position and setup."
+  (interactive)
+  (point-to-register 8)
+  (message "Have remember one position"))
+
+(defun emacsc/remember-jump ()
+  "Jump to latest position and setup."
+  (interactive)
+  (let ((tmp (point-marker)))
+    (jump-to-register 8)
+    (set-register 8 tmp))
+  (message "Have back to remember position"))
+
+(defun emacsc/point-stack-push ()
+  "Push current point in stack."
+  (interactive)
+  (message "Location marked.")
+  (setq point-stack (cons (list (current-buffer) (point)) point-stack)))
+
+(defun emacsc/point-stack-pop ()
+  "Pop point from stack."
+  (interactive)
+  (if (null point-stack)
+      (message "Stack is empty.")
+    (switch-to-buffer (caar point-stack))
+    (goto-char (cadar point-stack))
+    (setq point-stack (cdr point-stack))))
+
 (provide 'core-funcs)
 ;;; core-funcs.el ends here
