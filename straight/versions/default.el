@@ -67,6 +67,7 @@
  ("smex" . "55aaebe3d793c2c990b39a302eb26c184281c42c")
  ("spinner" . "e19f3cfc0646c0e23c10c22df219fcf427054621")
  ("swiper" . "471d644d6bdd7d5dc6ca4efb405e6a6389dff245")
+ ("symbol-overlay" . "c439b73a5f9713bb3dce98986b589bb901e22130")
  ("themes" . "ec199971005e720f138b3bf12b4004714a074c8c")
  ("transient" . "cc16a5eaa73617a281b0bbf71b24432c38994e30")
  ("treemacs" . "ac920b2265ca24c0536dd4502f792f06638a6fdc")
