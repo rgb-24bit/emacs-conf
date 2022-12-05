@@ -25,7 +25,7 @@ Dependencies:
 ### Code Style
 
 + public variables `emacsc-name`, private variables `emacsc--name`
-+ interactive func `emacsc/name`, general func `emacsc//name`
++ ~~interactive func `emacsc/name`, general func `emacsc//name`~~(The prefix is inconvenient to use).
 
 ### Known issues
 

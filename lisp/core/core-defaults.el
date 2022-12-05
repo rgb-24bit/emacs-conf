@@ -51,5 +51,9 @@
 ;; close native comp warning
 (setq native-comp-async-report-warnings-errors nil)
 
+;; scratch buffer
+(setq initial-major-mode 'fundamental-mode
+      initial-scratch-message nil)
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here

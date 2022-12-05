@@ -214,13 +214,14 @@ With negative N, comment out original line and use the absolute value."
   (interactive)
   (emacsc/adjust-frame-opacity -2))
 
-(defun emacsc/remember-init ()
+;; from https://github.com/manateelazycat/lazycat-emacs/blob/master/site-lisp/extensions/lazycat/basic-toolkit.el
+(defun remember-init ()
   "Remember current position and setup."
   (interactive)
   (point-to-register 8)
   (message "Have remember one position"))
 
-(defun emacsc/remember-jump ()
+(defun remember-jump ()
   "Jump to latest position and setup."
   (interactive)
   (let ((tmp (point-marker)))
@@ -228,13 +229,13 @@ With negative N, comment out original line and use the absolute value."
     (set-register 8 tmp))
   (message "Have back to remember position"))
 
-(defun emacsc/point-stack-push ()
+(defun point-stack-push ()
   "Push current point in stack."
   (interactive)
   (message "Location marked.")
   (setq point-stack (cons (list (current-buffer) (point)) point-stack)))
 
-(defun emacsc/point-stack-pop ()
+(defun point-stack-pop ()
   "Pop point from stack."
   (interactive)
   (if (null point-stack)
@@ -242,6 +243,36 @@ With negative N, comment out original line and use the absolute value."
     (switch-to-buffer (caar point-stack))
     (goto-char (cadar point-stack))
     (setq point-stack (cdr point-stack))))
+
+(defun strip-regular-expression-string (regular-expression)
+  "Strip all string that match REGULAR-EXPRESSION in select area of buffer.
+If not select any area, then strip current buffer"
+  (interactive)
+  (let ((begin (point-min))     ;initialization make select all buffer
+        (end (point-max)))
+    (if mark-active ;if have select some area of buffer, then strip this area
+        (setq begin (region-beginning)
+              end (region-end)))
+    (save-excursion                     ;save position
+      (goto-char end)                   ;goto end position
+      (while (and (> (point) begin)     ;when above beginning position
+                  (re-search-backward regular-expression nil t)) ;and find string that match regular expression
+        (replace-match "" t t)))))    ;replace target string with null
+
+(defun strip-blank-lines()
+  "Strip all blank lines in select area of buffer,
+if not select any area, then strip all blank lines of buffer."
+  (interactive)
+  (strip-regular-expression-string "^[ \t]*\n"))
+
+(defun join-lines (n)
+  "Join N lines."
+  (interactive "p")
+  (if (use-region-p)
+      (let ((fill-column (point-max)))
+        (fill-region (region-beginning) (region-end)))
+    (dotimes (_ (abs n))
+      (delete-indentation (natnump n)))))
 
 (provide 'core-funcs)
 ;;; core-funcs.el ends here

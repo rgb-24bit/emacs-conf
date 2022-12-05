@@ -152,12 +152,16 @@ operations after each indent operations have been done."
          ("C-M->" . er/contract-region)))
 
 ;; =============================================================================
-;; highlight symbol
+;; symbol overlay
 ;; =============================================================================
 
-(use-package-straight highlight-symbol
-  :commands highlight-symbol
-  :bind ("C-'" . highlight-symbol))
+(use-package-straight symbol-overlay
+  :commands symbol-overlay-put
+  :bind ("C-'" . symbol-overlay-put))
+
+;; (use-package-straight highlight-symbol
+;;   :commands highlight-symbol
+;;   :bind ("C-'" . highlight-symbol))
 
 ;; (defun emacsc/regexp-at-point ()
 ;;   "if region active, return the region,
@@ -179,11 +183,11 @@ operations after each indent operations have been done."
 ;;       (highlight-phrase hi-regexp-at-pt (hi-lock-read-face-name)))
 ;;     (deactivate-mark)))
 
-(defun emacsc/clear-all-highlight ()
-  "clear all highlight."
-  (interactive)
-  (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns)))
-    (mapcar 'unhighlight-regexp hi-regexp-list)))
+;; (defun emacsc/clear-all-highlight ()
+;;   "clear all highlight."
+;;   (interactive)
+;;   (let ((hi-regexp-list (mapcar #'car hi-lock-interactive-patterns)))
+;;     (mapcar 'unhighlight-regexp hi-regexp-list)))
 
 ;; (global-set-key (kbd "C-'") 'emacsc/toggle-highlight-at-point)
 
