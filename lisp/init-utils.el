@@ -460,5 +460,16 @@ operations after each indent operations have been done."
 (use-package toggle-one-window
   :commands toggle-one-window)
 
+;; =============================================================================
+;; color-rg
+;; =============================================================================
+
+(use-package color-rg
+  :commands (color-rg-search-input	color-rg-search-input-in-project)
+  :init
+  (emacsc-leader-def
+    "s d" 'color-rg-search-input
+    "s P" 'color-rg-search-input-in-project))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
