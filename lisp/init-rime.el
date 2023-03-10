@@ -7,7 +7,8 @@
 (setq rime-user-data-dir "~/.config/fcitx/rime")
 
 (setq default-input-method "rime"
-      rime-show-candidate 'posframe)
+      rime-show-candidate 'posframe
+      rime-posframe-style 'vertical)
 
 (provide 'init-rime)
 ;;; init-rime.el ends here
