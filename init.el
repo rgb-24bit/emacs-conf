@@ -68,7 +68,23 @@
      (font-spec :name "-*-STKaiti-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
                 :weight 'normal
                 :slant 'normal
-                :size 16.5)))))
+                :size 16.5))))
+
+ (emacsc-system-is-linux
+  (set-face-attribute
+   'default nil
+   :font (font-spec :name "-ADBO-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"
+                    :weight 'normal
+                    :slant 'normal
+                    :size 12.5))
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font
+     (frame-parameter nil 'font)
+     charset
+     (font-spec :name "-SINO-华文楷体-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1"
+                :weight 'normal
+                :slant 'normal
+                :size 15.0)))))
 
 ;; =============================================================================
 ;; Bootstrap config
@@ -94,11 +110,15 @@
 (require 'init-vc)
 (require 'init-treemacs)
 
-(when emacsc-system-is-mac
+(when (not emacsc-system-is-windows)
   (require 'init-vterm))
 
 ;; (when (not emacsc-system-is-mac)
 ;;   (require 'init-eaf))
+
+
+(when emacsc-system-is-linux
+  (require 'init-rime))
 
 (when (file-exists-p custom-file)
   (load custom-file))

@@ -55,5 +55,35 @@
 (setq initial-major-mode 'fundamental-mode
       initial-scratch-message nil)
 
+;; =============================================================================
+;; wsl browser
+;; https://emacs-china.org/t/wsl-emacs-windows/18605/2
+;; =============================================================================
+
+(defun emacsc//browse-url-generic (url &optional _new-window)
+  ;; new-window ignored
+  "Ask the WWW browser defined by `browse-url-generic-program' to load URL.
+Default to the URL around or before point.  A fresh copy of the
+browser is started up in a new process with possible additional arguments
+`browse-url-generic-args'.  This is appropriate for browsers which
+don't offer a form of remote control."
+  (interactive (browse-url-interactive-arg "URL: "))
+  (if (not browse-url-generic-program)
+      (error "No browser defined (`browse-url-generic-program')"))
+  (apply 'call-process browse-url-generic-program nil
+	 0 nil
+	 (append browse-url-generic-args
+                 (list (format "start %s"
+                               (replace-regexp-in-string "&" "^&" url))))))
+
+(when (and (eq system-type 'gnu/linux)
+           (string-match
+            "Linux.*Microsoft.*Linux"
+            (shell-command-to-string "uname -a")))
+  (setq
+   browse-url-generic-program  "/mnt/c/Windows/System32/cmd.exe"
+   browse-url-generic-args     '("/c")
+   browse-url-browser-function #'emacsc//browse-url-generic))
+
 (provide 'core-defaults)
 ;;; core-defaults.el ends here
