@@ -1,4 +1,5 @@
 (lsp-bridge :type git
             :host github
             :repo "manateelazycat/lsp-bridge"
+            :build (:not compile)
             :files ("lsp-bridge*.el" "acm/*.el" "acm/icons" "*.py" "core" "langserver" "multiserver"))

@@ -23,7 +23,10 @@
   "M-,"    'lsp-bridge-return-from-def
   "M-."    'lsp-bridge-find-def
   "M-?"    'lsp-bridge-find-references
-  "S-<f6>" 'lsp-bridge-rename)
+  "M-RET"  'lsp-bridge-code-action
+  "S-<f6>" 'lsp-bridge-rename
+  "C-M-l"  'lsp-bridge-code-format
+  "C-h ."  'lsp-bridge-popup-documentation)
 
 ;; =============================================================================
 ;; flycheck
@@ -51,7 +54,8 @@
                'rust-mode-local-vars-hook
                'go-mode-local-vars-hook
                'python-mode-local-vars-hook
-               'js-mode-local-vars-hook))
+               'js-mode-local-vars-hook
+               'c-mode-local-vars-hook))
   (add-hook hook 'emacsc//setup-lsp))
 
 (provide 'init-lsp)
