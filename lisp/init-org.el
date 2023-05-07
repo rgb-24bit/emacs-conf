@@ -40,6 +40,10 @@
     (setq org-adapt-indentation t)
     ;; start up show 1 level
     (setq org-startup-folded 'show1level)
+    ;; return follow link
+    (setq org-return-follows-link t)
+    ;; auto adjust footnotes
+    (setq org-footnote-auto-adjust t)
     ;; simple template
     (require 'org-tempo)
     ;; export
