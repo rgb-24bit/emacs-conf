@@ -48,6 +48,8 @@ OR `C-u straight-freeze-versions`.
 
 4. Some packages on elpa may modify the recipe definition, so upgrade elpa before upgrading the package.
 
+5. straight maybe use build-cache not update recipe define, if recipe has new elisp file, delete cache and rebuild.
+
 ### Reference configuration
 
 + [purcell/emacs.d](https://github.com/purcell/emacs.d)
