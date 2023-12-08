@@ -34,7 +34,7 @@
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
 ;; =============================================================================
-;; Pre config
+;; Pre config <= emacs 29
 ;; =============================================================================
 
 (cond
@@ -53,22 +53,6 @@
                 :weight 'normal
                 :slant 'normal
                 :size 12.0))))
-
- (emacsc-system-is-mac
-  (set-face-attribute
-   'default nil
-   :font (font-spec :name "-*-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"
-                    :weight 'normal
-                    :slant 'normal
-                    :size 14))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font
-     (frame-parameter nil 'font)
-     charset
-     (font-spec :name "-*-STKaiti-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
-                :weight 'normal
-                :slant 'normal
-                :size 16.5))))
 
  (emacsc-system-is-linux
   (set-face-attribute
@@ -122,6 +106,13 @@
 
 (when (file-exists-p custom-file)
   (load custom-file))
+
+;; =============================================================================
+;; cnfonts
+;; =============================================================================
+
+(use-package-straight cnfonts
+  :config (cnfonts-mode))
 
 ;; =============================================================================
 ;; start server

@@ -120,6 +120,10 @@
 (use-package-straight htmlize
   :defer t)
 
+(when emacsc-system-is-mac
+  (use-package-straight emacsql)
+  (setq org-roam-database-connector 'sqlite-builtin))
+
 (use-package-straight org-roam
   :custom (org-roam-directory "~/repositories/roam")
   :bind (("C-c n l"   . org-roam-buffer-toggle)
@@ -140,45 +144,55 @@
         org-id-locations-file (expand-file-name ".org-id-locations" emacsc-cache-directory))
   :config
   (with-eval-after-load 'org-roam-node
+    (dolist (sym.replace
+             '((string-glyph-compose . ucs-normalize-NFC-region)
+               (string-glyph-decompose . ucs-normalize-NFD-region)))
+      (let ((emacs-29-symbol (car sym.replace))
+            (previous-implementation (cdr sym.replace)))
+        (unless (fboundp emacs-29-symbol)
+          (defalias emacs-29-symbol previous-implementation))))
     (cl-defmethod org-roam-node-slug ((node org-roam-node))
-    "Custom slug format, ref https://github.com/org-roam/org-roam/pull/1544"
-    (let ((title (org-roam-node-title node))
-          (slug-trim-chars '(;; Combining Diacritical Marks https://www.unicode.org/charts/PDF/U0300.pdf
-                             768 ; U+0300 COMBINING GRAVE ACCENT
-                             769 ; U+0301 COMBINING ACUTE ACCENT
-                             770 ; U+0302 COMBINING CIRCUMFLEX ACCENT
-                             771 ; U+0303 COMBINING TILDE
-                             772 ; U+0304 COMBINING MACRON
-                             774 ; U+0306 COMBINING BREVE
-                             775 ; U+0307 COMBINING DOT ABOVE
-                             776 ; U+0308 COMBINING DIAERESIS
-                             777 ; U+0309 COMBINING HOOK ABOVE
-                             778 ; U+030A COMBINING RING ABOVE
-                             780 ; U+030C COMBINING CARON
-                             795 ; U+031B COMBINING HORN
-                             803 ; U+0323 COMBINING DOT BELOW
-                             804 ; U+0324 COMBINING DIAERESIS BELOW
-                             805 ; U+0325 COMBINING RING BELOW
-                             807 ; U+0327 COMBINING CEDILLA
-                             813 ; U+032D COMBINING CIRCUMFLEX ACCENT BELOW
-                             814 ; U+032E COMBINING BREVE BELOW
-                             816 ; U+0330 COMBINING TILDE BELOW
-                             817 ; U+0331 COMBINING MACRON BELOW
-                             )))
-      (cl-flet* ((nonspacing-mark-p (char)
-                                    (memq char slug-trim-chars))
-                 (strip-nonspacing-marks (s)
-                                         (ucs-normalize-NFC-string
-                                          (apply #'string (seq-remove #'nonspacing-mark-p
-                                                                      (ucs-normalize-NFD-string s)))))
-                 (cl-replace (title pair)
-                             (replace-regexp-in-string (car pair) (cdr pair) title)))
-        (let* ((pairs `(("[^[:alnum:][:digit:]]" . "-")  ;; convert anything not alphanumeric
-                        ("__*" . "_")  ;; remove sequential underscores
-                        ("^_" . "")    ;; remove starting underscore
-                        ("_$" . "")))  ;; remove ending underscore
-               (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
-          (downcase slug))))))
+      "Custom slug format, ref https://github.com/org-roam/org-roam/pull/1544"
+      ;; Shim `string-glyph-compose' and `string-glyph-decompose' for Emacs versions that do not have it.
+      ;; The functions were introduced in emacs commit 3f096eb3405b2fce7c35366eb2dcf025dda55783 and the
+      ;; (original) functions behind them aren't autoloaded anymore.
+      (let ((title (org-roam-node-title node))
+            (slug-trim-chars '(;; Combining Diacritical Marks https://www.unicode.org/charts/PDF/U0300.pdf
+                               768 ; U+0300 COMBINING GRAVE ACCENT
+                               769 ; U+0301 COMBINING ACUTE ACCENT
+                               770 ; U+0302 COMBINING CIRCUMFLEX ACCENT
+                               771 ; U+0303 COMBINING TILDE
+                               772 ; U+0304 COMBINING MACRON
+                               774 ; U+0306 COMBINING BREVE
+                               775 ; U+0307 COMBINING DOT ABOVE
+                               776 ; U+0308 COMBINING DIAERESIS
+                               777 ; U+0309 COMBINING HOOK ABOVE
+                               778 ; U+030A COMBINING RING ABOVE
+                               780 ; U+030C COMBINING CARON
+                               795 ; U+031B COMBINING HORN
+                               803 ; U+0323 COMBINING DOT BELOW
+                               804 ; U+0324 COMBINING DIAERESIS BELOW
+                               805 ; U+0325 COMBINING RING BELOW
+                               807 ; U+0327 COMBINING CEDILLA
+                               813 ; U+032D COMBINING CIRCUMFLEX ACCENT BELOW
+                               814 ; U+032E COMBINING BREVE BELOW
+                               816 ; U+0330 COMBINING TILDE BELOW
+                               817 ; U+0331 COMBINING MACRON BELOW
+                               )))
+        (cl-flet* ((nonspacing-mark-p (char)
+                     (memq char slug-trim-chars))
+                   (strip-nonspacing-marks (s)
+                     (string-glyph-compose
+                      (apply #'string (seq-remove #'nonspacing-mark-p
+                                                  (string-glyph-decompose s)))))
+                   (cl-replace (title pair)
+                     (replace-regexp-in-string (car pair) (cdr pair) title)))
+          (let* ((pairs `(("[^[:alnum:][:digit:]]" . "-")  ;; convert anything not alphanumeric
+                          ("__*" . "_")  ;; remove sequential underscores
+                          ("^_" . "")    ;; remove starting underscore
+                          ("_$" . "")))  ;; remove ending underscore
+                 (slug (-reduce-from #'cl-replace (strip-nonspacing-marks title) pairs)))
+            (downcase slug))))))
 
   (setq org-roam-graph-link-hidden-types '("file" "custom-id" "http" "https" "fuzzy"))
 
@@ -187,6 +201,8 @@
            :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
            :empty-lines 1
            :unnarrowed  t)))
+
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
 
   (org-roam-setup))
 

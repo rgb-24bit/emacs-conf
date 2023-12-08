@@ -53,7 +53,8 @@
       straight-check-for-modifications nil
       straight-enable-package-integration nil
       straight-use-package-by-default nil
-      straight-vc-git-default-clone-depth 1)
+      straight-vc-git-default-clone-depth 1
+      straight-vc-git-default-protocol 'ssh)
 
 (require 'straight-bootstrap)
 
